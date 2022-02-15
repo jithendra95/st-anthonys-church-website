@@ -15,9 +15,9 @@ export default class IndexPage extends React.Component {
 				   			<div className="col-md-6 col-md-offset-3 text-center">
 				   				<div className="slider-text">
 					   				<div className="slider-text-inner">
-					   					<h1>“Come, follow me,” Jesus said, “and I will send you out to fish for people.” At once they left their nets and followed him.</h1>
-											<h2>Matthew 4:19-20</h2>
-											<p> <a className="btn btn-primary btn-learn" >All Mass Times <i className="icon-arrow-right3"></i></a></p>
+					   					<h1 style={{fontSize: '22px'}}>“Come, follow me,” Jesus said, “and I will send you out to fish for people.” At once they left their nets and followed him.</h1>
+											<h2 style={{textAlign: 'right', marginBottom: '5em'}}>Matthew 4:19-20</h2>
+											<p> <a className="btn btn-primary btn-learn" href='/masses'>All Mass Times <i className="icon-arrow-right3"></i></a></p>
 					   				</div>
 				   				</div>
 				   			</div>
@@ -31,9 +31,9 @@ export default class IndexPage extends React.Component {
 				   			<div className="col-md-6 col-md-offset-3 text-center">
 				   				<div className="slider-text">
 					   				<div className="slider-text-inner">
-									   <h1>“Come, follow me,” Jesus said, “and I will send you out to fish for people.” At once they left their nets and followed him.</h1>
-											<h2>Matthew 4:19-20</h2>
-											<p> <a className="btn btn-primary btn-learn" >All Mass Times <i className="icon-arrow-right3"></i></a></p>
+									   <h1 style={{fontSize: '22px'}}>“Come, follow me,” Jesus said, “and I will send you out to fish for people.” At once they left their nets and followed him.</h1>
+											<h2 style={{textAlign: 'right', marginBottom: '5em'}}>Matthew 4:19-20</h2>
+											<p> <a className="btn btn-primary btn-learn"  href='/masses'>All Mass Times <i className="icon-arrow-right3"></i></a></p>
 					   				</div>
 					   			</div>
 				   			</div>
@@ -47,9 +47,9 @@ export default class IndexPage extends React.Component {
 				   			<div className="col-md-6 col-md-offset-3 text-center">
 				   				<div className="slider-text">
 					   				<div className="slider-text-inner text-center">
-									   <h1>“Come, follow me,” Jesus said, “and I will send you out to fish for people.” At once they left their nets and followed him.</h1>
-											<h2>Matthew 4:19-20</h2>
-											<p> <a className="btn btn-primary btn-learn" >All Mass Times <i className="icon-arrow-right3"></i></a></p>
+									   <h1 style={{fontSize: '22px'}}>“Come, follow me,” Jesus said, “and I will send you out to fish for people.” At once they left their nets and followed him.</h1>
+											<h2 style={{textAlign: 'right', marginBottom: '5em'}}>Matthew 4:19-20</h2>
+											<p> <a className="btn btn-primary btn-learn" href='/masses'>All Mass Times <i className="icon-arrow-right3"></i></a></p>
 					   				</div>
 					   			</div>
 				   			</div>

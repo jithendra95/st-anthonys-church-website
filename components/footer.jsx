@@ -10,7 +10,7 @@ export default class AppFooter extends React.Component {
           </div>
           <div className="col-md-4 text-center">
             <h3>
-              <a href="">St Anthony's Church Boralesgamuwa</a>
+              <a href="/">St Anthony's Church Boralesgamuwa</a>
             </h3>
           </div>
           <div className="col-md-4 text-center">

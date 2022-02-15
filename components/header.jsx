@@ -15,7 +15,7 @@ export default class AppHeader extends React.Component {
               <div className="col-md-12 col-md-offset-0 text-center menu-1">
                 <ul>
                   <li className="active">
-                    <a href="">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li>
                     <a href="/masses">Masses & Services</a>
