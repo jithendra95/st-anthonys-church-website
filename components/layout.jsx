@@ -8,7 +8,7 @@ export default class AppLayout extends React.Component {
     return (
       <>
         <Head>
-          <title>St Anthony's Church Boralesgamuwa</title>
+          <title>St Mary's Church Maharagama</title>
         </Head>
         <Header />
         {this.props.children}

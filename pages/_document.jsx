@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -10,30 +10,8 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <Html>
         <Head>
-          <meta charset="utf-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta
-            name="description"
-            content="Free HTML5 Website Template by freehtml5.co"
-          />
-          <meta
-            name="keywords"
-            content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
-          />
-          <meta name="author" content="freehtml5.co" />
-
-          <meta property="og:title" content="" />
-          <meta property="og:image" content="" />
-          <meta property="og:url" content="" />
-          <meta property="og:site_name" content="" />
-          <meta property="og:description" content="" />
-          <meta name="twitter:title" content="" />
-          <meta name="twitter:image" content="" />
-          <meta name="twitter:url" content="" />
-          <meta name="twitter:card" content="" />
 
           <link
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700"
@@ -124,7 +102,7 @@ export default class MyDocument extends Document {
 
           <script src="static/assets/template/js/main.js"></script>
         </body>
-      </html>
+      </Html>
     );
   }
 }

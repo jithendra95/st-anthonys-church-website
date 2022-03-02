@@ -1,77 +1,98 @@
+import Head from "next/head";
 import React from "react";
+import AppContact from "../components/contact";
 import Layout from "../components/layout";
+import AppMass from "../components/masses";
 
 export default class IndexPage extends React.Component {
   render() {
-    return <Layout>
+    return (
+		<>
+        <Head>
+          <meta charset="utf-8" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta
+            name="description"
+            content="Free HTML5 Website Template by freehtml5.co"
+          />
+          <meta
+            name="keywords"
+            content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
+          />
+          <meta name="author" content="freehtml5.co" />
+
+          <meta property="og:title" content="" />
+          <meta property="og:image" content="" />
+          <meta property="og:url" content="" />
+          <meta property="og:site_name" content="" />
+          <meta property="og:description" content="" />
+          <meta name="twitter:title" content="" />
+          <meta name="twitter:image" content="" />
+          <meta name="twitter:url" content="" />
+          <meta name="twitter:card" content="" />
+        </Head>
+      <Layout>
         <div className="container-wrap">
-		<aside id="fh5co-hero">
-			<div className="flexslider">
-				<ul className="slides">
-			   	<li style={{backgroundImage: "url('static/assets/template/images/img_bg_1.jpg')"}}>
-			   		<div className="overlay"></div>
-			   		<div className="container-fluid">
-			   			<div className="row">
-				   			<div className="col-md-6 col-md-offset-3 text-center">
-				   				<div className="slider-text">
-					   				<div className="slider-text-inner">
-					   					<h1 style={{fontSize: '22px'}}>“Come, follow me,” Jesus said, “and I will send you out to fish for people.” At once they left their nets and followed him.</h1>
-											<h2 style={{textAlign: 'right', marginBottom: '5em'}}>Matthew 4:19-20</h2>
-											<p> <a className="btn btn-primary btn-learn" href='/masses'>All Mass Times <i className="icon-arrow-right3"></i></a></p>
-					   				</div>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style={{backgroundImage: "url('static/assets/template/images/img_bg_2.jpg')"}}>
-			   		<div className="overlay"></div>
-			   		<div className="container-fluid">
-			   			<div className="row">
-				   			<div className="col-md-6 col-md-offset-3 text-center">
-				   				<div className="slider-text">
-					   				<div className="slider-text-inner">
-									   <h1 style={{fontSize: '22px'}}>“Come, follow me,” Jesus said, “and I will send you out to fish for people.” At once they left their nets and followed him.</h1>
-											<h2 style={{textAlign: 'right', marginBottom: '5em'}}>Matthew 4:19-20</h2>
-											<p> <a className="btn btn-primary btn-learn"  href='/masses'>All Mass Times <i className="icon-arrow-right3"></i></a></p>
-					   				</div>
-					   			</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			   	<li style={{backgroundImage: "url('static/assets/template/images/img_bg_3.jpg')"}}>
-			   		<div className="overlay"></div>
-			   		<div className="container-fluids">
-			   			<div className="row">
-				   			<div className="col-md-6 col-md-offset-3 text-center">
-				   				<div className="slider-text">
-					   				<div className="slider-text-inner text-center">
-									   <h1 style={{fontSize: '22px'}}>“Come, follow me,” Jesus said, “and I will send you out to fish for people.” At once they left their nets and followed him.</h1>
-											<h2 style={{textAlign: 'right', marginBottom: '5em'}}>Matthew 4:19-20</h2>
-											<p> <a className="btn btn-primary btn-learn" href='/masses'>All Mass Times <i className="icon-arrow-right3"></i></a></p>
-					   				</div>
-					   			</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			  	</ul>
-		  	</div>
-		</aside>
+          <aside id="fh5co-hero">
+            <div className="flexslider">
+              <ul className="slides">
+                <li
+                  style={{
+                    backgroundImage:
+                      "url('static/assets/template/images/img_bg_3.jpg')",
+                  }}
+                >
+                  <div className="overlay"></div>
+                  <div className="container-fluid">
+                    <div className="row">
+                      <div className="col-md-6 col-md-offset-3 text-center">
+                        <div className="slider-text">
+                          <div className="slider-text-inner">
+                            <h1 style={{ fontSize: "22px" }}>
+                              “Come, follow me,” Jesus said, “and I will send
+                              you out to fish for people.” At once they left
+                              their nets and followed him.
+                            </h1>
+                            <h2
+                              style={{
+                                textAlign: "right",
+                                marginBottom: "5em",
+                              }}
+                            >
+                              Matthew 4:19-20
+                            </h2>
+                            <p>
+                              {" "}
+                              <a
+                                className="btn btn-primary btn-learn"
+                                href="/masses"
+                              >
+                                All Mass Times{" "}
+                                <i className="icon-arrow-right3"></i>
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </aside>
 
-		<div id="fh5co-intro">
-			<div className="row animate-box">
-				<div className="col-md-12 col-md-offset-0 text-center">
-					<h2>Living in God's Amazing Grace!</h2>
-					<span>We are open Sunday & Tuesday</span>
-				</div>
-			</div>
-		</div>
+          <AppMass />
 
-		<hr/>
+          <hr />
 
-	</div>
-    </Layout>;
+          <AppContact />
+
+          <hr />
+        </div>
+      </Layout>
+
+	  </>
+    );
   }
 }
