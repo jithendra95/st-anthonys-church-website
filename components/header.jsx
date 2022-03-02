@@ -11,7 +11,7 @@ export default function AppHeader(props) {
             <div className="row">
               <div className="col-md-12 col-offset-0 text-center">
                 <div id="fh5co-logo">
-                  <a href="">St Mary's Church Maharagama</a>
+                  <a href="/">St Mary's Church Maharagama</a>
                 </div>
               </div>
               <div className="col-md-12 col-md-offset-0 text-center menu-1">
