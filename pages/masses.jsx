@@ -9,7 +9,7 @@ export default class MassPage extends React.Component {
       <>
         <Head>
           <title>Masses | St Mary's Church Maharagama</title>
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta
@@ -21,12 +21,23 @@ export default class MassPage extends React.Component {
             content="st mary, st mary's, st mary's maharagama, st athony's boralesgamuwa, st anthony, st athony's, maharagama, boralesgamuwa, catholic, catholic church, church, masses, mass times, mass time "
           />
 
-          <meta property="og:title" content="Masses | St Mary's Church Maharagama" />
-          <meta property="og:description" content="All mass times for special masses and regular masses at St Mary's Church Maharagama and St Anthony's Church Boralesgamuwa" />
-          <meta property="og:image" content="/static/assets/template/images/Mary.png" />
-          <meta property="og:url" content="https://www.stmarysmaharagama.org/masses" /> 
+          <meta
+            property="og:title"
+            content="Masses | St Mary's Church Maharagama"
+          />
+          <meta
+            property="og:description"
+            content="All mass times for special masses and regular masses at St Mary's Church Maharagama and St Anthony's Church Boralesgamuwa"
+          />
+          <meta
+            property="og:image"
+            content="/static/assets/template/images/Mary.png"
+          />
+          <meta
+            property="og:url"
+            content="https://www.stmarysmaharagama.org/masses"
+          />
           <meta property="og:type" content="website" />
-
         </Head>
         <Layout>
           <div className="container-wrap">
@@ -36,7 +47,7 @@ export default class MassPage extends React.Component {
                   <li
                     style={{
                       backgroundImage:
-                        "url('static/assets/template/images/img_bg_3.jpg')",
+                        "url('static/assets/template/images/church.jpg')",
                     }}
                   >
                     <div className="overlay"></div>
@@ -44,8 +55,10 @@ export default class MassPage extends React.Component {
                       <div className="row">
                         <div className="col-md-6 col-md-offset-3 text-center slider-text">
                           <div className="slider-text-inner">
-                            <h1>Masses & Services</h1>
-                            <h2>St Mary's Church Maharagama</h2>
+                            <div className="image-text-overlay">
+                              <h1>Masses & Services</h1>
+                              <h2>St Mary's Church Maharagama</h2>
+                            </div>
                           </div>
                         </div>
                       </div>

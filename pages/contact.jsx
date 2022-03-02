@@ -9,7 +9,7 @@ export default class ContactPage extends React.Component {
       <>
         <Head>
           <title>Contact | St Mary's Church Maharagama</title>
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta

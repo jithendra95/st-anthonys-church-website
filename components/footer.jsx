@@ -23,15 +23,25 @@ export default class AppFooter extends React.Component {
               <a href="/">St Mary's Church Maharagama</a>
             </h3>
           </div>
-          <div className="col-md-4 text-center">
-            <ul className="fh5co-social-icons">
+          <div className="col-md-3 col-md-push-1 text-center">
+            {/* <ul className="fh5co-social-icons">
               <li>
                 <a href="https://www.facebook.com/St-Marys-Church-Maharagama-1391610607802822/">
                   <i className="icon-facebook2"></i>
                   Facebook Page
                 </a>
               </li>
+            </ul> */}
+
+            <ul className="fh5co-social-icons">
+              <li>
+                Church Garden's, Mahamegawatte., Maharagama
+              </li>
+              <li>
+                +94 0112 843 561
+              </li>
             </ul>
+
           </div>
           <div className="row copyright">
             <div className="col-md-12 text-center">
