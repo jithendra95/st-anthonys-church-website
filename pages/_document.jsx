@@ -63,6 +63,7 @@ export default class MyDocument extends Document {
           <script src="static/assets/template/js/respond.min.js"></script>
 
           <Favicon/>
+          <meta name="google-site-verification" content="go0t_PIKhJf7klXn2uBuV2G0kjQWtVjm6666hzq1wHw" />
         </Head>
         <body>
           <div className="fh5co-loader"></div>
