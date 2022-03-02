@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
+import Favicon from "../components/favicon";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -60,6 +61,8 @@ export default class MyDocument extends Document {
           <script src="static/assets/template/js/modernizr-2.6.2.min.js"></script>
 
           <script src="static/assets/template/js/respond.min.js"></script>
+
+          <Favicon/>
         </Head>
         <body>
           <div className="fh5co-loader"></div>

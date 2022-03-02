@@ -5,8 +5,8 @@ export default class AppMass extends React.Component {
     return (
       <div id="fh5co-events">
         <div className="events-entry">
-          <div class="row animate-box">
-            <div class="col-sm-6 col-sm-offset-3 text-center fh5co-heading">
+          <div className="row animate-box">
+            <div className="col-sm-6 col-sm-offset-3 text-center fh5co-heading">
               <h2>Lenten Masses</h2>
             </div>
           </div>
@@ -38,8 +38,8 @@ export default class AppMass extends React.Component {
         </div>
 
         <div className="events-entry">
-          <div class="row animate-box">
-            <div class="col-sm-6 col-sm-offset-3 text-center fh5co-heading">
+          <div className="row animate-box">
+            <div className="col-sm-6 col-sm-offset-3 text-center fh5co-heading">
               <h2>Regular Masses</h2>
             </div>
           </div>

@@ -8,28 +8,25 @@ export default class ContactPage extends React.Component {
     return (
       <>
         <Head>
+          <title>Contact | St Mary's Church Maharagama</title>
           <meta charset="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta
             name="description"
-            content="Free HTML5 Website Template by freehtml5.co"
+            content="Contact Information for St Mary's Church Maharagama"
           />
           <meta
             name="keywords"
-            content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive"
+            content="st mary, st mary's, st mary's maharagama, st athony's boralesgamuwa, st anthony, st athony's, maharagama, boralesgamuwa, catholic, catholic church, church, masses, mass times, mass time, office hours, parish priest "
           />
-          <meta name="author" content="freehtml5.co" />
 
-          <meta property="og:title" content="" />
-          <meta property="og:image" content="" />
-          <meta property="og:url" content="" />
-          <meta property="og:site_name" content="" />
-          <meta property="og:description" content="" />
-          <meta name="twitter:title" content="" />
-          <meta name="twitter:image" content="" />
-          <meta name="twitter:url" content="" />
-          <meta name="twitter:card" content="" />
+          <meta property="og:title" content="Contact | St Mary's Church Maharagama" />
+          <meta property="og:description" content="Contact Information for St Mary's Church Maharagama" />
+          <meta property="og:image" content="/static/assets/template/images/Mary.png" />
+          <meta property="og:url" content="https://www.stmarysmaharagama.org/contact" /> 
+          <meta property="og:type" content="website" />
+
         </Head>
         <Layout>
           <div className="container-wrap">

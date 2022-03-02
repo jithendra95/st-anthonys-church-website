@@ -14,10 +14,6 @@ export default class AppContact extends React.Component {
               <li>
                 <i class="icon-phone3"></i>+94 0112 843 561
               </li>
-              <li>
-                <i class="icon-globe2"></i>
-                <a href="/">www.stmarysmaharagama.org</a>
-              </li>
             </ul>
           </div>
 
