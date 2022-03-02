@@ -7,7 +7,7 @@ export default class AppContact extends React.Component {
         <div className="col-sm-1"></div>
         <div
           className="col-sm-5 animate-box"
-          style={{ marginTop: "20px", marginLeft: "10px" }}
+          style={{ marginTop: "20px", marginLeft: "10px", marginBottom: '3em' }}
         >
           <h3>Contact Us</h3>
           <ul className="contact-info">

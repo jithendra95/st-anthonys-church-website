@@ -5,31 +5,7 @@ export default class AppMass extends React.Component {
     return (
       <div id="fh5co-events">
 
-        <div className="events-entry">
-          <div className="row animate-box">
-            <div className="col-sm-6 col-sm-offset-3 text-center fh5co-heading">
-              <h2>Season of Lent</h2>
-            </div>
-          </div>
-
-          <h3>
-            <a href="#special" id="special">
-              Friday
-            </a>
-          </h3>
-
-          <div className="sub-items">
-            <div className="row">
-              <div className="col-sm-6" style={{ marginBottom: "50px" }}>
-                <h4>St Mary's Church Maharagama</h4>
-                <ul>
-                  <li>5:00 PM - Mass, Gospel reflection & Benediction (Sinhala)</li>
-                </ul>
-              </div>
-              <div />
-            </div>
-          </div>
-        </div>
+        
 
         <div className="events-entry">
           <div className="row animate-box">
@@ -91,6 +67,34 @@ export default class AppMass extends React.Component {
             </div>
           </div>
         </div>
+
+        <div className="events-entry">
+          <div className="row animate-box">
+            <div className="col-sm-6 col-sm-offset-3 text-center fh5co-heading">
+              <h2>Season of Lent</h2>
+            </div>
+          </div>
+
+          <h3>
+            <a href="#special" id="special">
+              Friday
+            </a>
+          </h3>
+
+          <div className="sub-items">
+            <div className="row">
+              <div className="col-sm-6" style={{ marginBottom: "50px" }}>
+                <h4>St Mary's Church Maharagama</h4>
+                <ul>
+                  <li>5:00 PM - Mass, Gospel reflection & Benediction (Sinhala)</li>
+                </ul>
+              </div>
+              <div />
+            </div>
+          </div>
+        </div>
+
+        
       </div>
     );
   }
