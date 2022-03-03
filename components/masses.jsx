@@ -54,13 +54,13 @@ export default class AppMass extends React.Component {
               <div className="col-sm-6" style={{ marginBottom: "50px" }}>
                 <h4>St Mary's Church Maharagama</h4>
                 <ul>
-                  <li>5:00 PM Wednesday - Perpetual help - Novena & Mass (Sinhala/English alternative)</li>
+                  <li>5:00 PM - Wednesday - Perpetual help - Novena & Mass (Sinhala/English alternative)</li>  
                 </ul>
               </div>
               <div className="col-sm-6" style={{ marginBottom: "50px" }}>
                 <h4>St Anthony's Church Boralesgamuwa</h4>
                 <ul>
-                  <li>06:00 PM - Mass & Novena (English)</li>
+                  <li>06:00 PM - Tuesday - Mass & Novena (English)</li>
                 </ul>
               </div>
               <div />
@@ -75,18 +75,12 @@ export default class AppMass extends React.Component {
             </div>
           </div>
 
-          <h3>
-            <a href="#special" id="special">
-              Friday
-            </a>
-          </h3>
-
           <div className="sub-items">
             <div className="row">
               <div className="col-sm-6" style={{ marginBottom: "50px" }}>
                 <h4>St Mary's Church Maharagama</h4>
                 <ul>
-                  <li>5:00 PM - Mass, Gospel reflection & Benediction (Sinhala)</li>
+                  <li>5:00 PM - Friday - Mass, Gospel reflection & Benediction (Sinhala)</li>
                 </ul>
               </div>
               <div />
