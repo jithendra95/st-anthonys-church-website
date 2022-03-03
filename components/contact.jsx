@@ -16,7 +16,7 @@ export default class AppContact extends React.Component {
               Maharagama
             </li>
             <li>
-              <i className="icon-phone3"></i>+94 0112 843 561
+              <i className="icon-phone3"></i>+94 112 843 561
             </li>
           </ul>
         </div>

@@ -24,7 +24,7 @@ export default class IndexPage extends React.Component {
 
           <meta
             property="og:title"
-            content="Contact | St Mary's Church Maharagama"
+            content="St Mary's Church Maharagama"
           />
           <meta
             property="og:description"
