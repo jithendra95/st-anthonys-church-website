@@ -3,75 +3,120 @@ import React from "react";
 import Layout from "../components/layout";
 import AppMass from "../components/masses";
 
-export default class MassPage extends React.Component {
-  render() {
-    return (
-      <>
-        <Head>
-          <title>Masses | St Mary's Church Maharagama</title>
-          <meta charSet="utf-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta
-            name="description"
-            content="All mass times for special masses and regular masses at St Mary's Church Maharagama and St Anthony's Church Boralesgamuwa"
-          />
-          <meta
-            name="keywords"
-            content="st mary, st mary's, st mary's maharagama, st athony's boralesgamuwa, st anthony, st athony's, maharagama, boralesgamuwa, catholic, catholic church, church, masses, mass times, mass time "
-          />
+export default function MassPage({ massSchedule }) {
+  return (
+    <>
+      <Head>
+        <title>Masses | St Mary's Church Maharagama</title>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="description"
+          content="All mass times for special masses and regular masses at St Mary's Church Maharagama and St Anthony's Church Boralesgamuwa"
+        />
+        <meta
+          name="keywords"
+          content="st mary, st mary's, st mary's maharagama, st athony's boralesgamuwa, st anthony, st athony's, maharagama, boralesgamuwa, catholic, catholic church, church, masses, mass times, mass time "
+        />
 
-          <meta
-            property="og:title"
-            content="Masses | St Mary's Church Maharagama"
-          />
-          <meta
-            property="og:description"
-            content="All mass times for special masses and regular masses at St Mary's Church Maharagama and St Anthony's Church Boralesgamuwa"
-          />
-          <meta
-            property="og:image"
-            content="/static/assets/template/images/Mary.png"
-          />
-          <meta
-            property="og:url"
-            content="https://www.stmarysmaharagama.org/masses"
-          />
-          <meta property="og:type" content="website" />
-        </Head>
-        <Layout>
-          <div className="container-wrap">
-            <aside id="fh5co-hero">
-              <div className="flexslider">
-                <ul className="slides">
-                  <li
-                    style={{
-                      backgroundImage:
-                        "url('static/assets/template/images/church.jpg')",
-                    }}
-                  >
-                    <div className="overlay"></div>
-                    <div className="container-fluid">
-                      <div className="row">
-                        <div className="col-md-6 col-md-offset-3 text-center slider-text">
-                          <div className="slider-text-inner">
-                            <div className="image-text-overlay">
-                              <h1>Masses & Services</h1>
-                              <h2>St Mary's Church Maharagama</h2>
-                            </div>
+        <meta
+          property="og:title"
+          content="Masses | St Mary's Church Maharagama"
+        />
+        <meta
+          property="og:description"
+          content="All mass times for special masses and regular masses at St Mary's Church Maharagama and St Anthony's Church Boralesgamuwa"
+        />
+        <meta
+          property="og:image"
+          content="/static/assets/template/images/Mary.png"
+        />
+        <meta
+          property="og:url"
+          content="https://www.stmarysmaharagama.org/masses"
+        />
+        <meta property="og:type" content="website" />
+      </Head>
+      <Layout>
+        <div className="container-wrap">
+          <aside id="fh5co-hero">
+            <div className="flexslider">
+              <ul className="slides">
+                <li
+                  style={{
+                    backgroundImage:
+                      "url('static/assets/template/images/church.jpg')",
+                  }}
+                >
+                  <div className="overlay"></div>
+                  <div className="container-fluid">
+                    <div className="row">
+                      <div className="col-md-6 col-md-offset-3 text-center slider-text">
+                        <div className="slider-text-inner">
+                          <div className="image-text-overlay">
+                            <h1>Masses & Services</h1>
+                            <h2>St Mary's Church Maharagama</h2>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </li>
-                </ul>
-              </div>
-            </aside>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </aside>
 
-            <AppMass />
-          </div>
-        </Layout>
-      </>
-    );
-  }
+          <AppMass massSchedule={massSchedule} />
+        </div>
+      </Layout>
+    </>
+  );
+}
+
+export async function getStaticProps() {
+  const massSchedule = [
+    {
+      header: "Regular Masses",
+      updatedDate: "03rd March 2022",
+      massess: [
+        {
+          name: "Sunday Eucharist",
+          maharagama: [
+            "6:00 PM - Saturday (English)",
+            "7:30 AM - Sunday (Sinhala)",
+            "5:00 PM - Sunday (English)",
+          ],
+          boralesgamuwa: ['09:30 AM - Sunday (Billigual)'],
+        },
+
+        {
+          name: "Weekday",
+          maharagama: [
+            "5:00 PM - Wednesday - Perpetual help - Novena & Mass (Sinhala/English alternative)",
+          ],
+          boralesgamuwa: ['06:00 PM - Tuesday - Mass & Novena (English)'],
+        },
+      ],
+    },
+    {
+      header: "Season of Lent",
+      updatedDate: "03rd March 2022",
+      massess: [
+        {
+          
+          maharagama: [
+            "5:00 PM - Friday - Mass, Gospel reflection & Benediction (Sinhala)",
+          ],
+          boralesgamuwa: [],
+        }
+      ],
+    }
+  ];
+
+  return {
+    props: {
+      massSchedule,
+    },
+  };
 }
