@@ -14,7 +14,7 @@ export default function AppMass({ massSchedule }) {
           <div className="sub-items">
             <div className="row">
               <div className="col-sm-6" style={{ marginBottom: "50px" }}>
-                {mass.maharagama.length > 0 ? (
+                {mass.maharagama?.length > 0 ? (
                   <>
                     <h4>St Mary's Church Maharagama</h4>
                     <ul>
@@ -28,7 +28,7 @@ export default function AppMass({ massSchedule }) {
                 )}
               </div>
               <div className="col-sm-6" style={{ marginBottom: "50px" }}>
-                {mass.boralesgamuwa.length > 0 ? (
+                {mass.boralesgamuwa?.length > 0 ? (
                   <>
                     <h4>St Anthony's Church Boralesgamuwa</h4>
                     <ul>

@@ -2,6 +2,7 @@ import Head from "next/head";
 import React from "react";
 import AppContact from "../components/contact";
 import Layout from "../components/layout";
+import { getContactInfo } from "./data/contact";
 
 export default function ContactPage({conactInfo}) {
   return (
@@ -50,14 +51,7 @@ export default function ContactPage({conactInfo}) {
 export async function getStaticProps() {
   // const res = await fetch('https://.../posts')
   // const posts = await res.json()
-  const conactInfo = {
-    phoneNo: '+94 112 843 561',
-    address: 'Church Garden\'s, Mahamegawatte.,',
-    priestName: "Rev. Fr. Edmund Thilakaratne",
-    location: "St Mary's Church Maharagama",
-    officeDay: "Wednesday",
-    times: ["8:30 AM - 12:30 PM (Wednesday)", "4:00 PM - 7:00 PM (Wednesday)"],
-  };
+  const conactInfo = getContactInfo()
   return {
     props: {
       conactInfo,

@@ -2,6 +2,7 @@ import Head from "next/head";
 import React from "react";
 import Layout from "../components/layout";
 import AppMass from "../components/masses";
+import { getMassess } from "./data/masses";
 
 export default function MassPage({ massSchedule }) {
   return (
@@ -75,44 +76,7 @@ export default function MassPage({ massSchedule }) {
 }
 
 export async function getStaticProps() {
-  const massSchedule = [
-    {
-      header: "Regular Masses",
-      updatedDate: "03rd March 2022",
-      massess: [
-        {
-          name: "Sunday Eucharist",
-          maharagama: [
-            "6:00 PM - Saturday (English)",
-            "7:30 AM - Sunday (Sinhala)",
-            "5:00 PM - Sunday (English)",
-          ],
-          boralesgamuwa: ['09:30 AM - Sunday (Billigual)'],
-        },
-
-        {
-          name: "Weekday",
-          maharagama: [
-            "5:00 PM - Wednesday - Perpetual help - Novena & Mass (Sinhala/English alternative)",
-          ],
-          boralesgamuwa: ['06:00 PM - Tuesday - Mass & Novena (English)'],
-        },
-      ],
-    },
-    {
-      header: "Season of Lent",
-      updatedDate: "03rd March 2022",
-      massess: [
-        {
-          
-          maharagama: [
-            "5:00 PM - Friday - Mass, Gospel reflection & Benediction (Sinhala)",
-          ],
-          boralesgamuwa: [],
-        }
-      ],
-    }
-  ];
+  const massSchedule = getMassess();
 
   return {
     props: {

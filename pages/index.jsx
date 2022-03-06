@@ -3,8 +3,13 @@ import React from "react";
 import AppContact from "../components/contact";
 import Layout from "../components/layout";
 import AppMass from "../components/masses";
+import { firestore } from "../firebase/firebase";
+import { getContactInfo } from "./data/contact";
+import { getMassess } from "./data/masses";
 
-export default function IndexPage({bibleVerse}) {
+import { doc, getDoc } from "firebase/firestore";
+
+export default function IndexPage({bibleVerse, conactInfo, massSchedule}) {
   return (
     <>
       <Head>
@@ -84,11 +89,11 @@ export default function IndexPage({bibleVerse}) {
             </div>
           </aside>
 
-          <AppMass />
+          <AppMass massSchedule={massSchedule}/>
 
           <hr />
 
-          <AppContact />
+          <AppContact contactInfo={conactInfo}/>
 
           <hr />
         </div>
@@ -98,15 +103,22 @@ export default function IndexPage({bibleVerse}) {
 }
 
 export async function getStaticProps() {
-  // const res = await fetch('https://.../posts')
-  // const posts = await res.json()
-  const bibleVerse = {
-    verse: 'Joel 2:13',
-    text: 'Rend your heart, not your garment. Return to Yahweh, your God - gracious and compassionate',
-  };
+  const conactInfo   = await getContactInfo()
+  const massSchedule = await getMassess();
+
+  const docRef = doc(firestore, "static_data", "bible_verse");
+  const docSnap = await getDoc(docRef);
+  let bibleVerse;
+
+  if (docSnap.exists()) {
+    bibleVerse = docSnap.data();
+  }
+
   return {
     props: {
       bibleVerse,
+      conactInfo,
+      massSchedule
     },
   };
 }
