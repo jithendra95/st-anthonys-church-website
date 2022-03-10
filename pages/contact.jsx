@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 import AppContact from "../components/contact";
 import Layout from "../components/layout";
-import { getContactInfo } from "./data/contact";
+import { getContactInfo } from "../data/contact";
 
 export default function ContactPage({conactInfo}) {
   return (

@@ -4,8 +4,8 @@ import AppContact from "../components/contact";
 import Layout from "../components/layout";
 import AppMass from "../components/masses";
 import { firestore } from "../firebase/firebase";
-import { getContactInfo } from "./data/contact";
-import { getMassess } from "./data/masses";
+import { getContactInfo } from "../data/contact";
+import { getMassess } from "../data/masses";
 
 import { doc, getDoc } from "firebase/firestore";
 import AppAnnouncement from "../components/announcements";
