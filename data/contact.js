@@ -1,5 +1,5 @@
 import { doc, getDoc } from "firebase/firestore";
-import { firestore } from "../../firebase/firebase";
+import { firestore } from "../firebase/firebase";
 
 export async function getContactInfo() {
   return new Promise(async function (resolve, reject) {

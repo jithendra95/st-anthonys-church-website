@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AppMass({ massSchedule }) {
+export default function AppMass({ massSchedule }){
   const renderMasses = (massess) => {
     return massess?.map((mass, i) => {
       return (

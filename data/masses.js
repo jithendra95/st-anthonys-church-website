@@ -1,5 +1,5 @@
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
-import { firestore } from "../../firebase/firebase";
+import { firestore } from "../firebase/firebase";
 
 export async function getMassess() {
   return new Promise(async function (resolve, reject) {
