@@ -30,7 +30,7 @@ export default function IndexPage({ bibleVerse, conactInfo, massSchedule }) {
         <meta property="og:title" content="St Mary's Church Maharagama" />
         <meta
           property="og:description"
-          content="Home Page for St Mary's Church Maharagama"
+          content="St Mary's Church Maharagama | Mass times and other announcements"
         />
         <meta
           property="og:image"
@@ -93,7 +93,7 @@ export default function IndexPage({ bibleVerse, conactInfo, massSchedule }) {
           <AppAnnouncement />
 
           <hr />
-          
+
           <AppMass massSchedule={massSchedule} />
 
           <hr />
