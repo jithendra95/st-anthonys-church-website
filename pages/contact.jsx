@@ -51,7 +51,7 @@ export default function ContactPage({conactInfo}) {
 export async function getStaticProps() {
   // const res = await fetch('https://.../posts')
   // const posts = await res.json()
-  const conactInfo = getContactInfo()
+  const conactInfo   = await getContactInfo();
   return {
     props: {
       conactInfo,

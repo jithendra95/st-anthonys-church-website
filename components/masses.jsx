@@ -4,7 +4,7 @@ export default function AppMass({ massSchedule }) {
   const renderMasses = (massess) => {
     return massess?.map((mass, i) => {
       return (
-        <>
+        <div key={mass.name+"_"+i}>
           {mass.name?(<h3>
             <a href="#daily" id="daily">
               {mass.name}
@@ -44,7 +44,7 @@ export default function AppMass({ massSchedule }) {
               <div />
             </div>
           </div>
-        </>
+        </div>
       );
     });
   };
@@ -53,7 +53,7 @@ export default function AppMass({ massSchedule }) {
     <div id="fh5co-events">
       {massSchedule?.map((schedule, i) => {
         return (
-          <div className="events-entry">
+          <div className="events-entry" key={`main_${i}`}>
             <div className="row animate-box">
               <div className="col-sm-6 col-sm-offset-3 text-center fh5co-heading">
                 <h2>{schedule.header}</h2>
@@ -67,26 +67,6 @@ export default function AppMass({ massSchedule }) {
           </div>
         );
       })}
-
-      {/* <div className="events-entry">
-          <div className="row animate-box">
-            <div className="col-sm-6 col-sm-offset-3 text-center fh5co-heading">
-              <h2>Season of Lent</h2>
-            </div>
-          </div>
-
-          <div className="sub-items">
-            <div className="row">
-              <div className="col-sm-6" style={{ marginBottom: "50px" }}>
-                <h4>St Mary's Church Maharagama</h4>
-                <ul>
-                  <li>5:00 PM - Friday - Mass, Gospel reflection & Benediction (Sinhala)</li>
-                </ul>
-              </div>
-              <div />
-            </div>
-          </div>
-        </div> */}
     </div>
   );
 }

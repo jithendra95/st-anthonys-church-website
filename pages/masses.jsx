@@ -2,6 +2,7 @@ import Head from "next/head";
 import React from "react";
 import Layout from "../components/layout";
 import AppMass from "../components/masses";
+import { getContactInfo } from "./data/contact";
 import { getMassess } from "./data/masses";
 
 export default function MassPage({ massSchedule }) {
@@ -76,7 +77,8 @@ export default function MassPage({ massSchedule }) {
 }
 
 export async function getStaticProps() {
-  const massSchedule = getMassess();
+  const massSchedule = await getMassess();
+  await getContactInfo();
 
   return {
     props: {

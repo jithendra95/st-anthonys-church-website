@@ -8,8 +8,9 @@ import { getContactInfo } from "./data/contact";
 import { getMassess } from "./data/masses";
 
 import { doc, getDoc } from "firebase/firestore";
+import AppAnnouncement from "../components/announcements";
 
-export default function IndexPage({bibleVerse, conactInfo, massSchedule}) {
+export default function IndexPage({ bibleVerse, conactInfo, massSchedule }) {
   return (
     <>
       <Head>
@@ -89,11 +90,15 @@ export default function IndexPage({bibleVerse, conactInfo, massSchedule}) {
             </div>
           </aside>
 
-          <AppMass massSchedule={massSchedule}/>
+          <AppAnnouncement />
+
+          <hr />
+          
+          <AppMass massSchedule={massSchedule} />
 
           <hr />
 
-          <AppContact contactInfo={conactInfo}/>
+          <AppContact contactInfo={conactInfo} />
 
           <hr />
         </div>
@@ -103,7 +108,7 @@ export default function IndexPage({bibleVerse, conactInfo, massSchedule}) {
 }
 
 export async function getStaticProps() {
-  const conactInfo   = await getContactInfo()
+  const conactInfo = await getContactInfo();
   const massSchedule = await getMassess();
 
   const docRef = doc(firestore, "static_data", "bible_verse");
@@ -118,7 +123,7 @@ export async function getStaticProps() {
     props: {
       bibleVerse,
       conactInfo,
-      massSchedule
+      massSchedule,
     },
   };
 }
