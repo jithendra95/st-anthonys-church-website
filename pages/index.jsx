@@ -9,8 +9,9 @@ import { getMassess } from "../data/masses";
 
 import { doc, getDoc } from "firebase/firestore";
 import AppAnnouncement from "../components/announcements";
+import { getAnnouncements } from "../data/announcement";
 
-export default function IndexPage({ bibleVerse, conactInfo, massSchedule }) {
+export default function IndexPage({ bibleVerse, conactInfo, massSchedule, announcements }) {
   return (
     <>
       <Head>
@@ -90,7 +91,7 @@ export default function IndexPage({ bibleVerse, conactInfo, massSchedule }) {
             </div>
           </aside>
 
-          <AppAnnouncement />
+          <AppAnnouncement announcements={announcements}/>
 
           <hr />
 
@@ -110,6 +111,7 @@ export default function IndexPage({ bibleVerse, conactInfo, massSchedule }) {
 export async function getStaticProps() {
   const conactInfo = await getContactInfo();
   const massSchedule = await getMassess();
+  const announcements = await getAnnouncements();
 
   const docRef = doc(firestore, "static_data", "bible_verse");
   const docSnap = await getDoc(docRef);
@@ -124,6 +126,7 @@ export async function getStaticProps() {
       bibleVerse,
       conactInfo,
       massSchedule,
+      announcements
     },
   };
 }

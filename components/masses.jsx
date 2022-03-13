@@ -19,7 +19,7 @@ export default function AppMass({ massSchedule }){
                     <h4>St Mary's Church Maharagama</h4>
                     <ul>
                       {mass.maharagama.map((mahMass, j) => {
-                        return <li>{mahMass}</li>;
+                        return <li key={`${mass.name}_mah_${j}`}>{mahMass}</li>;
                       })}
                     </ul>
                   </>
@@ -33,7 +33,7 @@ export default function AppMass({ massSchedule }){
                     <h4>St Anthony's Church Boralesgamuwa</h4>
                     <ul>
                       {mass.boralesgamuwa.map((borMass, j) => {
-                        return <li>{borMass}</li>;
+                        return <li key={`${mass.name}_bor_${j}`}>{borMass}</li>;
                       })}
                     </ul>
                   </>
