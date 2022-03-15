@@ -12,11 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npm run build
+
       - name: deploy-functions-hosting
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only functions hosting
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHURCH_WEB_MAHAR }}'
-          channelId: live
-          projectId: church-web-mahar
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
