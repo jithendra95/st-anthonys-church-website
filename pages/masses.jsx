@@ -76,7 +76,7 @@ export default function MassPage({ massSchedule }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const massSchedule = await getMassess();
   await getContactInfo();
 

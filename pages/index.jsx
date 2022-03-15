@@ -108,7 +108,7 @@ export default function IndexPage({ bibleVerse, conactInfo, massSchedule, announ
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const conactInfo = await getContactInfo();
   const massSchedule = await getMassess();
   const announcements = await getAnnouncements();

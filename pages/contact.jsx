@@ -48,7 +48,7 @@ export default function ContactPage({conactInfo}) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // const res = await fetch('https://.../posts')
   // const posts = await res.json()
   const conactInfo   = await getContactInfo();
