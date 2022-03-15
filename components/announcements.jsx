@@ -5,7 +5,6 @@ export default function AppAnnouncement({ announcements }) {
         <div className="row animate-box">
           <div className="col-sm-6 col-sm-offset-3 text-center fh5co-heading">
             <h2>Announcements</h2>
-            <p>Updated {announcements.updatedDate}</p>
           </div>
         </div>
 
