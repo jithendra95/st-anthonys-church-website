@@ -4,7 +4,8 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "**/admin-app/**"
     ],
     "rewrites": [
       {
@@ -24,6 +25,7 @@
       ".firebaserc",
       "firebase.json",
       "**/node_modules/**",
+      "**/admin-app/**",
       "**/public/**",
       "**/.next/cache/**"
     ]

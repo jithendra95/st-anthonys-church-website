@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.component-container{
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 25px;
+
+    .full-width-form{
+        width: 100%;
+    }
+
+    h3{
+        text-align: center;
+    }
+    
+    .button-group{
+        text-align: right;
+    }
+
+    mat-form-field {
+        margin-right: 15px;
+    }
+}

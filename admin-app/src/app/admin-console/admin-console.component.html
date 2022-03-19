@@ -1,0 +1,36 @@
+<div class="admin-container">
+  <div class="main-container">
+    <p>
+      <mat-toolbar color="primary">
+        <span>St Mary's Church Admin</span>
+        <span class="example-spacer"></span>
+        <button
+          mat-icon-button
+          class="example-icon favorite-icon"
+          aria-label="Example icon-button with heart icon"
+        >
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          class="example-icon"
+          aria-label="Example icon-button with share icon"
+        >
+          <mat-icon>share</mat-icon>
+        </button>
+      </mat-toolbar>
+    </p>
+
+    <mat-tab-group mat-align-tabs="center" [selectedIndex]="1">
+      <mat-tab label="General">
+        <app-general></app-general>
+      </mat-tab>
+      <mat-tab label="Mass">
+        <app-mass></app-mass>
+      </mat-tab>
+      <mat-tab label="Announcements">
+        <app-announcement></app-announcement>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
