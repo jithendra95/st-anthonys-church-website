@@ -13,20 +13,20 @@ export default function AppMass({ massSchedule }){
 
           <div className="sub-items">
             <div className="row">
-              <div className="col-sm-6" style={{ marginBottom: "50px" }}>
+              
                 {mass.maharagama?.length > 0 ? (
-                  <>
+                  <div className="col-sm-6" style={{ marginBottom: "50px" }}>
                     <h4>St Mary's Church Maharagama</h4>
                     <ul>
                       {mass.maharagama.map((mahMass, j) => {
                         return <li key={`${mass.name}_mah_${j}`}>{mahMass}</li>;
                       })}
                     </ul>
-                  </>
+                  </div>
                 ) : (
                   []
                 )}
-              </div>
+              
               <div className="col-sm-6" style={{ marginBottom: "50px" }}>
                 {mass.boralesgamuwa?.length > 0 ? (
                   <>

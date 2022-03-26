@@ -91,11 +91,12 @@ export default function IndexPage({ bibleVerse, conactInfo, massSchedule, announ
             </div>
           </aside>
 
-          <AppAnnouncement announcements={announcements}/>
-
+          
+          <AppMass massSchedule={massSchedule} />
+          
           <hr />
 
-          <AppMass massSchedule={massSchedule} />
+          <AppAnnouncement announcements={announcements}/>
 
           <hr />
 
@@ -108,7 +109,7 @@ export default function IndexPage({ bibleVerse, conactInfo, massSchedule, announ
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const conactInfo = await getContactInfo();
   const massSchedule = await getMassess();
   const announcements = await getAnnouncements();

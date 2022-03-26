@@ -10,7 +10,8 @@ export async function getMassess() {
       let schedule = doc.data();
       schedule.massess = [];
 
-      const querySnapshot2 = await getDocs(collection(firestore, `massess/${doc.id}/massess`));
+      const queryRef = query(collection(firestore, `massess/${doc.id}/massess`), orderBy("order"));
+      const querySnapshot2 = await getDocs(queryRef);
       querySnapshot2.forEach(async (mass)=>{
         schedule.massess.push(mass.data());
       })
