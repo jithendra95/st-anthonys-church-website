@@ -11,7 +11,21 @@ import { doc, getDoc } from "firebase/firestore";
 import AppAnnouncement from "../components/announcements";
 import { getAnnouncements } from "../data/announcement";
 
-export default function IndexPage({ bibleVerse, conactInfo, massSchedule, announcements }) {
+export default function IndexPage({
+  bibleVerse,
+  conactInfo,
+  massSchedule,
+  announcements,
+}) {
+  const dismissAlert = () => {
+    if (process.browser) {
+      let el = document.getElementById("alert");
+      if (typeof el !== "undefined" || el !== null) {
+        //el.style.display = "none";
+      }
+    }
+  };
+
   return (
     <>
       <Head>
@@ -88,15 +102,18 @@ export default function IndexPage({ bibleVerse, conactInfo, massSchedule, announ
                   </div>
                 </li>
               </ul>
+                <div className="alert-message" id="alert">
+                  <strong>Lenten Contribution</strong> <br/>
+                   Please bring your Lenten contribution (2nd & 3rd April) in the envelopes provided.
+                </div>
             </div>
           </aside>
 
-          
           <AppMass massSchedule={massSchedule} />
-          
+
           <hr />
 
-          <AppAnnouncement announcements={announcements}/>
+          <AppAnnouncement announcements={announcements} />
 
           <hr />
 
@@ -127,7 +144,7 @@ export async function getStaticProps() {
       bibleVerse,
       conactInfo,
       massSchedule,
-      announcements
+      announcements,
     },
   };
 }

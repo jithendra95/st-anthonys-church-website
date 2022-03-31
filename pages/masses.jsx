@@ -66,6 +66,11 @@ export default function MassPage({ massSchedule }) {
                   </div>
                 </li>
               </ul>
+              <div className="alert-message" id="alert">
+                <strong>Lenten Contribution</strong> <br />
+                Please bring your Lenten contribution (2nd & 3rd April) in the
+                envelopes provided.
+              </div>
             </div>
           </aside>
 

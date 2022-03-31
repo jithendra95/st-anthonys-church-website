@@ -1,46 +1,48 @@
 import React from "react";
 
-export default function AppMass({ massSchedule }){
+export default function AppMass({ massSchedule }) {
   const renderMasses = (massess) => {
     return massess?.map((mass, i) => {
       return (
-        <div key={mass.name+"_"+i}>
-          {mass.name?(<h3>
-            <a href="#daily" id="daily">
-              {mass.name}
-            </a>
-          </h3>) :([])}
+        <div key={mass.name + "_" + i}>
+          {mass.name ? (
+            <h3>
+              <a href="#daily" id="daily">
+                {mass.name}
+              </a>
+            </h3>
+          ) : (
+            []
+          )}
 
           <div className="sub-items">
             <div className="row">
-              
-                {mass.maharagama?.length > 0 ? (
-                  <div className="col-sm-6" style={{ marginBottom: "50px" }}>
-                    <h4>St Mary's Church Maharagama</h4>
-                    <ul>
-                      {mass.maharagama.map((mahMass, j) => {
-                        return <li key={`${mass.name}_mah_${j}`}>{mahMass}</li>;
-                      })}
-                    </ul>
-                  </div>
-                ) : (
-                  []
-                )}
-              
-              <div className="col-sm-6" style={{ marginBottom: "50px" }}>
-                {mass.boralesgamuwa?.length > 0 ? (
-                  <>
-                    <h4>St Anthony's Church Boralesgamuwa</h4>
-                    <ul>
-                      {mass.boralesgamuwa.map((borMass, j) => {
-                        return <li key={`${mass.name}_bor_${j}`}>{borMass}</li>;
-                      })}
-                    </ul>
-                  </>
-                ) : (
-                  []
-                )}
-              </div>
+              {mass.maharagama?.length > 0 ? (
+                <div className="col-sm-6" style={{ marginBottom: "50px" }}>
+                  <h4>St Mary's Church Maharagama</h4>
+                  <ul>
+                    {mass.maharagama.map((mahMass, j) => {
+                      return <li key={`${mass.name}_mah_${j}`}>{mahMass}</li>;
+                    })}
+                  </ul>
+                </div>
+              ) : (
+                []
+              )}
+
+              {mass.boralesgamuwa?.length > 0 ? (
+                <div className="col-sm-6" style={{ marginBottom: "50px" }}>
+                  <h4>St Anthony's Church Boralesgamuwa</h4>
+                  <ul>
+                    {mass.boralesgamuwa.map((borMass, j) => {
+                      return <li key={`${mass.name}_bor_${j}`}>{borMass}</li>;
+                    })}
+                  </ul>
+                </div>
+              ) : (
+                []
+              )}
+
               <div />
             </div>
           </div>
