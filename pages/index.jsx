@@ -102,10 +102,15 @@ export default function IndexPage({
                   </div>
                 </li>
               </ul>
-                <div className="alert-message" id="alert">
+              <div className="alert-message" id="alert">
                   <strong>Lenten Contribution</strong> <br/>
-                   Please bring your Lenten contribution (2nd & 3rd April) in the envelopes provided.
+                   Please bring your Lenten contribution in the envelopes provided on Palm Sunday.
                 </div>
+              {/* <div className="alert-message-red" id="alert">
+                <strong>No Masses!</strong> <br />
+                Due to islandwide curfew, no Masses will be held from 6.00pm
+                Saturday 2nd April till 4th April Monday .
+              </div> */}
             </div>
           </aside>
 
