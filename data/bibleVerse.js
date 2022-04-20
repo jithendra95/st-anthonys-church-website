@@ -1,18 +1,12 @@
 import { database } from "../firebase/firebase";
 import { ref, onValue } from "firebase/database";
 
-export async function getMassess() {
+export async function getBibleVerse() {
   return new Promise(async function (resolve, reject) {
-    let massSchedule = [];
-    const starCountRef = ref(database, 'masses');
+    const starCountRef = ref(database, 'bible_verse');
     onValue(starCountRef, (snapshot) => {
-      massSchedule = snapshot.val();
-      resolve(massSchedule);
+      let bibleVerse = snapshot.val();
+      resolve(bibleVerse);
     });
-
-    
-    
   });
-
-
 }

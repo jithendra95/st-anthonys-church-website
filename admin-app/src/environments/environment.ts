@@ -7,6 +7,7 @@ export const environment = {
   firebaseConfig: {
     apiKey: 'AIzaSyCphmOzPdNWcWmXQyFT7rn8tCtafp1leOE',
     authDomain: 'church-web-mahar.firebaseapp.com',
+    databaseURL: 'https://church-web-mahar-default-rtdb.asia-southeast1.firebasedatabase.app',
     projectId: 'church-web-mahar',
     storageBucket: 'church-web-mahar.appspot.com',
     messagingSenderId: '1028660436145',

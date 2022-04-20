@@ -1,10 +1,30 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect } from "react";
 import AppContact from "../components/contact";
 import Layout from "../components/layout";
 import { getContactInfo } from "../data/contact";
+import { useRouter } from "next/router";
+import { analytics } from "../firebase/firebase";
+import { logEvent, setCurrentScreen } from "firebase/analytics";
 
 export default function ContactPage({conactInfo}) {
+  const routers = useRouter();
+  useEffect(() => {
+      const logAnalytics = (url) => {
+        setCurrentScreen(analytics, url);
+        logEvent(analytics, 'contact_view');
+      };
+
+      routers.events.on('routeChangeComplete', logAnalytics);
+      //For First Page
+      logAnalytics(window.location.pathname);
+
+      //Remvove Event Listener after un-mount
+      return () => {
+        routers.events.off('routeChangeComplete', logAnalytics);
+      };
+  }, []);
+
   return (
     <>
       <Head>
@@ -48,9 +68,7 @@ export default function ContactPage({conactInfo}) {
   );
 }
 
-export async function getStaticProps() {
-  // const res = await fetch('https://.../posts')
-  // const posts = await res.json()
+export async function getServerSideProps() {
   const conactInfo   = await getContactInfo();
   return {
     props: {

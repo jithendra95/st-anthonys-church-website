@@ -12,6 +12,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         width: 100%;
     }
 
+    .half-width-form{
+        width: 80%;
+    }
+
     h3{
         text-align: center;
     }
@@ -22,5 +26,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
     mat-form-field {
         margin-right: 15px;
+        width: 250px;
     }
 }

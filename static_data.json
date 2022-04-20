@@ -1,0 +1,110 @@
+[
+  {
+    "header": "Holy Week",
+    "order": 1,
+    "updatedDate": "23th March 2022",
+    "massess": [
+      {
+        "name": "Saturday (9th April 2022)",
+        "order": 0,
+        "maharagama": ["6:00 PM - English"]
+      },
+      {
+        "name": "Palm Sunday",
+        "order": 1,
+        "maharagama": ["7:30 AM - Sinhala", "5:00 PM - Bilingual"],
+        "boralesgamuwa": ["9:30 AM - Bilingual"]
+      },
+      { "name": "Monday", "maharagama": ["7:00 AM - Mass"], "order": 2 },
+      {
+        "order": 3,
+        "boralesgamuwa": ["6:30 PM - Mass & Novena"],
+        "name": "Tuesday"
+      },
+      {
+        "name": "Wednesday",
+        "maharagama": ["5:00 PM - Mass & Way of the cross"],
+        "order": 4
+      },
+      {
+        "maharagama": [
+          "6:30 PM - Mass - Sinhala",
+          "9:00 PM - Mass - English",
+          "10:30 PM - 11:00 PM - Holy hour - Daham pasal children and Teachers",
+          "11:00 PM - 11:30 PM - Holy hour - Rev Sisters",
+          "11:30 PM - 12:00 midnight- General Holy hour "
+        ],
+        "name": "Maundy Thursday",
+        "order": 5,
+        "boralesgamuwa": [
+          "7:00 PM - Mass - Bilingual",
+          "Holy hours till 12:00 midnight"
+        ]
+      },
+      {
+        "name": "Good Friday",
+        "boralesgamuwa": ["3:00 PM - Service - Sinhala & English"],
+        "order": 6,
+        "maharagama": [
+          "7:00 AM - Way of the cross",
+          "2:00 PM - Service - Sinhala",
+          "6:00 PM - Service - English"
+        ]
+      },
+      {
+        "name": "Holy Saturday",
+        "order": 7,
+        "boralesgamuwa": ["7:00 PM - Sinhala & English"],
+        "maharagama": ["6:30 PM - Sinahala", "9:30 PM - English"]
+      },
+      {
+        "order": 8,
+        "name": "Easter Sunday",
+        "maharagama": [
+          "7:30 AM - Mass - Sinhala",
+          "9:30 AM - Mass - English",
+          "NO MASSES in the evening"
+        ]
+      }
+    ]
+  },
+  {
+    "header": "Season of Lent",
+    "order": 3,
+    "updatedDate": "09th March 2022",
+    "massess": [
+      {
+        "order": 0,
+        "boralesgamuwa": [],
+        "maharagama": [
+          "5:00 PM - Friday - Mass, Gospel reflection & Benediction (Sinhala)"
+        ]
+      }
+    ]
+  },
+  {
+    "header": "Regular Masses",
+    "order": 3,
+    "updatedDate": "09th March 2022",
+    "massess": [
+      {
+        "name": "Sunday Eucharist",
+        "boralesgamuwa": ["09:30 AM - Sunday (Billigual)"],
+        "order": 0,
+        "maharagama": [
+          "6:00 PM - Saturday (English)",
+          "7:30 AM - Sunday (Sinhala)",
+          "5:00 PM - Sunday (English)"
+        ]
+      },
+      {
+        "maharagama": [
+          "5:00 PM - Wednesday - Perpetual help - Novena & Mass (Sinhala/English alternative)"
+        ],
+        "name": "Weekday",
+        "order": 1,
+        "boralesgamuwa": ["06:00 PM - Tuesday - Mass & Novena (English)"]
+      }
+    ]
+  }
+]

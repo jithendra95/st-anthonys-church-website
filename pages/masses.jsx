@@ -1,11 +1,32 @@
+import { logEvent, setCurrentScreen } from "firebase/analytics";
 import Head from "next/head";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import AppAlert from "../components/alert";
 import Layout from "../components/layout";
 import AppMass from "../components/masses";
+import { getAlert } from "../data/alert";
 import { getContactInfo } from "../data/contact";
 import { getMassess } from "../data/masses";
+import { analytics } from "../firebase/firebase";
 
-export default function MassPage({ massSchedule }) {
+export default function MassPage({ massSchedule, alert }) {
+  const routers = useRouter();
+  useEffect(() => {
+      const logAnalytics = (url) => {
+        setCurrentScreen(analytics, url);
+        logEvent(analytics, 'mass_view');
+      };
+
+      routers.events.on('routeChangeComplete', logAnalytics);
+      //For First Page
+      logAnalytics(window.location.pathname);
+
+      //Remvove Event Listener after un-mount
+      return () => {
+        routers.events.off('routeChangeComplete', logAnalytics);
+      };
+  }, []);
   return (
     <>
       <Head>
@@ -66,17 +87,8 @@ export default function MassPage({ massSchedule }) {
                   </div>
                 </li>
               </ul>
-              <div className="alert-message" id="alert">
-                <strong>Lenten Contribution</strong> <br />
-                Please bring your Lenten contribution in the
-                envelopes provided on Palm Sunday.
-              </div>
-
-              {/* <div className="alert-message-red" id="alert">
-                <strong>No Masses!</strong> <br />
-                Due to islandwide curfew, no Masses will be held from 6.00pm
-                Saturday 2nd April till 4th April Monday .
-              </div> */}
+              
+              <AppAlert alert={alert}/>
             </div>
           </aside>
 
@@ -87,13 +99,15 @@ export default function MassPage({ massSchedule }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const massSchedule = await getMassess();
   await getContactInfo();
+  const alert = await getAlert();
 
   return {
     props: {
       massSchedule,
+      alert
     },
   };
 }

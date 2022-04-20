@@ -3,56 +3,96 @@
 
   <mat-form-field appearance="fill" class="full-width-form">
     <mat-label>Bible Verse Text</mat-label>
-    <textarea matInput></textarea>
+    <textarea
+      matInput
+      [(ngModel)]="bibleVerse!.text"
+      (keyup)="detectChange()"
+    ></textarea>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="full-width-form">
     <mat-label>Bible Verse</mat-label>
-    <input matInput />
+    <input matInput [(ngModel)]="bibleVerse!.verse" (keyup)="detectChange()" />
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="full-width-form">
     <mat-label>Address</mat-label>
-    <input matInput />
+    <input
+      matInput
+      [(ngModel)]="staticData!.address"
+      (keyup)="detectChange()"
+    />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Parish Preist</mat-label>
-    <input matInput />
+    <input
+      matInput
+      [(ngModel)]="staticData!.priestName"
+      (keyup)="detectChange()"
+    />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Location</mat-label>
-    <input matInput />
+    <input
+      matInput
+      [(ngModel)]="staticData!.location"
+      (keyup)="detectChange()"
+    />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Phone No</mat-label>
-    <input matInput />
+    <input
+      matInput
+      [(ngModel)]="staticData!.phoneNo"
+      (keyup)="detectChange()"
+    />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Office Day</mat-label>
-    <input matInput />
+    <input
+      matInput
+      [(ngModel)]="staticData!.officeDay"
+      (keyup)="detectChange()"
+    />
   </mat-form-field>
 
   <h4>Office Times</h4>
 
-  <div>
+  <div *ngFor="let item of staticData!.times; let i = index">
     <mat-form-field appearance="fill">
       <mat-label>Office Times</mat-label>
-      <input matInput />
+      <input
+        matInput
+        [(ngModel)]="staticData!.times[i]"
+        (keyup)="detectChange()"
+      />
     </mat-form-field>
-    <button mat-icon-button color="primary" aria-label="Add a office time">
-      <mat-icon>add</mat-icon>
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="Add a office time"
+      *ngIf="i == staticData!.times.length-1"
+    >
+      <mat-icon (click)="addTime()">add</mat-icon>
     </button>
 
     <button mat-icon-button color="primary" aria-label="Add a office time">
-      <mat-icon>delete</mat-icon>
+      <mat-icon  (click)="removeTime(i)">delete</mat-icon>
     </button>
   </div>
 
   <div class="button-group">
-    <button mat-raised-button color="primary">Publish</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="publish()"
+      [disabled]="!changeDetected"
+    >
+      Publish
+    </button>
   </div>
 </div>

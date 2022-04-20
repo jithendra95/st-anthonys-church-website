@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { GeneralComponent } from './components/general/general.component';
 import { MassComponent } from './components/mass/mass.component';
 import { AnnouncementComponent } from './components/announcement/announcement.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { AnnouncementComponent } from './components/announcement/announcement.co
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,30 +1,46 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect } from "react";
 import AppContact from "../components/contact";
 import Layout from "../components/layout";
 import AppMass from "../components/masses";
-import { firestore } from "../firebase/firebase";
 import { getContactInfo } from "../data/contact";
 import { getMassess } from "../data/masses";
-
-import { doc, getDoc } from "firebase/firestore";
 import AppAnnouncement from "../components/announcements";
 import { getAnnouncements } from "../data/announcement";
+import { getBibleVerse } from "../data/bibleVerse";
+import { getAlert } from "../data/alert";
+import AppAlert from "../components/alert";
+import { useRouter } from "next/router";
+import { analytics } from "../firebase/firebase";
+import { logEvent, setCurrentScreen } from "firebase/analytics";
 
 export default function IndexPage({
   bibleVerse,
   conactInfo,
   massSchedule,
   announcements,
+  alert,
 }) {
-  const dismissAlert = () => {
-    if (process.browser) {
-      let el = document.getElementById("alert");
-      if (typeof el !== "undefined" || el !== null) {
-        //el.style.display = "none";
-      }
-    }
-  };
+
+  const routers = useRouter();
+  useEffect(() => {
+    //if (process.env.NODE_ENV === 'production') {
+
+      const logAnalytics = (url) => {
+        setCurrentScreen(analytics, url);
+        logEvent(analytics, 'home_view');
+      };
+
+      routers.events.on('routeChangeComplete', logAnalytics);
+      //For First Page
+      logAnalytics(window.location.pathname);
+
+      //Remvove Event Listener after un-mount
+      return () => {
+        routers.events.off('routeChangeComplete', logAnalytics);
+      };
+    //}
+  }, []);
 
   return (
     <>
@@ -102,15 +118,9 @@ export default function IndexPage({
                   </div>
                 </li>
               </ul>
-              <div className="alert-message" id="alert">
-                  <strong>Lenten Contribution</strong> <br/>
-                   Please bring your Lenten contribution in the envelopes provided on Palm Sunday.
-                </div>
-              {/* <div className="alert-message-red" id="alert">
-                <strong>No Masses!</strong> <br />
-                Due to islandwide curfew, no Masses will be held from 6.00pm
-                Saturday 2nd April till 4th April Monday .
-              </div> */}
+
+              <AppAlert alert={alert} />
+              
             </div>
           </aside>
 
@@ -131,18 +141,12 @@ export default function IndexPage({
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const conactInfo = await getContactInfo();
   const massSchedule = await getMassess();
   const announcements = await getAnnouncements();
-
-  const docRef = doc(firestore, "static_data", "bible_verse");
-  const docSnap = await getDoc(docRef);
-  let bibleVerse;
-
-  if (docSnap.exists()) {
-    bibleVerse = docSnap.data();
-  }
+  const bibleVerse = await getBibleVerse();
+  const alert = await getAlert();
 
   return {
     props: {
@@ -150,6 +154,7 @@ export async function getStaticProps() {
       conactInfo,
       massSchedule,
       announcements,
+      alert,
     },
   };
 }

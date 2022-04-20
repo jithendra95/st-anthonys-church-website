@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { initializeApp } from 'firebase/app';
+import { MassCategory } from 'src/app/models/masses.interface';
+import { MassState } from 'src/app/states/mass.state';
 
 @Component({
   selector: 'app-mass',
@@ -7,7 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MassComponent implements OnInit {
 
-  constructor() { }
+  massCategoryList: MassCategory[] = [];
+  constructor(public massState: MassState) { 
+    this.init();
+  }
+
+  async init(){
+    await this.massState.loadList();
+    this.massState.getList$().subscribe(list=>{
+      this.massCategoryList = list as MassCategory[];
+    })
+  }
 
   ngOnInit(): void {
   }

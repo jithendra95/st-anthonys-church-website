@@ -13,53 +13,91 @@
   <!-- <mat-button-toggle value="green">Green</mat-button-toggle>
     <mat-button-toggle value="blue">Blue</mat-button-toggle> -->
 
-  <mat-form-field appearance="fill" class="full-width-form">
-    <mat-label>Mass Category</mat-label>
-    <input matInput />
-  </mat-form-field>
+  <div *ngFor="let item of massCategoryList; index as i">
+    <mat-form-field appearance="fill" class="full-width-form">
+      <mat-label>Mass Category</mat-label>
+      <input matInput [(ngModel)]="massCategoryList[i].header" />
+    </mat-form-field>
 
-  <div>
-    <button mat-raised-button color="primary">Add Mass</button>
-  </div>
-
-  <mat-form-field appearance="fill" class="full-width-form">
-    <mat-label>Mass</mat-label>
-    <input matInput />
-  </mat-form-field>
-
- 
-
-  <div class="mass-church">
     <div>
-      <h4>St Marys Maharagama</h4>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Item</mat-label>
-        <input matInput />
-      </mat-form-field>
-
-      <button mat-icon-button color="primary" aria-label="Add a office time">
-        <mat-icon>add</mat-icon>
-      </button>
-      <button mat-icon-button color="primary" aria-label="Add a office time">
-        <mat-icon>delete</mat-icon>
-      </button>
+      <button mat-raised-button color="primary">Add Mass</button>
     </div>
-    <div>
-      <h4>St Anthonys Boralesgamuwa</h4>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Item</mat-label>
-        <input matInput />
+    <div *ngFor="let massItem of massCategoryList[i].massess; index as j">
+      <mat-form-field appearance="fill" class="full-width-form">
+        <mat-label>Mass</mat-label>
+        <input matInput [(ngModel)]="massCategoryList[i].massess[j].name" />
       </mat-form-field>
+      <div class="mass-church">
+        <div>
+          <h4>St Marys Maharagama</h4>
 
-      <button mat-icon-button color="primary" aria-label="Add a office time">
-        <mat-icon>add</mat-icon>
-      </button>
-      <button mat-icon-button color="primary" aria-label="Add a office time">
-        <mat-icon>delete</mat-icon>
-      </button>
+          <div
+            *ngFor="
+              let massItem of massCategoryList[i].massess[j].maharagama;
+              index as k
+            "
+          >
+            <mat-form-field appearance="fill">
+              <mat-label>Item</mat-label>
+              <input
+                matInput
+                [(ngModel)]="massCategoryList[i].massess[j].maharagama[k]"
+              />
+            </mat-form-field>
 
+            <button
+              mat-icon-button
+              color="primary"
+              aria-label="Add a office time"
+              *ngIf="k == massCategoryList[i].massess[j].maharagama.length-1"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              color="primary"
+              aria-label="Add a office time"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div>
+          <h4>St Anthonys Boralesgamuwa</h4>
+
+          <div
+            *ngFor="
+              let massItem of massCategoryList[i].massess[j].boralesgamuwa;
+              index as k
+            "
+          >
+            <mat-form-field appearance="fill">
+              <mat-label>Item</mat-label>
+              <input
+                matInput
+                [(ngModel)]="massCategoryList[i].massess[j].boralesgamuwa[k]"
+              />
+            </mat-form-field>
+
+            <button
+              mat-icon-button
+              color="primary"
+              aria-label="Add a mass"
+              *ngIf="k == massCategoryList[i].massess[j].boralesgamuwa.length-1"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              color="primary"
+              aria-label="Add a office time"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
