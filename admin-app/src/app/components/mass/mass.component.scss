@@ -1,7 +1,26 @@
 .mass-church{
-    width: 110%;
+    width: 95%;
     margin-top: 25px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.main-section{
+    display: flex;
+    flex-direction: row;
+    margin:5px;
+}
+
+.checkbox-margin {
+    margin: 0 12px;
+  
+}
+
+.expansion-panel{
+    width: 1000px; 
+}
+
+.add-button{
+    margin: 5px;
 }

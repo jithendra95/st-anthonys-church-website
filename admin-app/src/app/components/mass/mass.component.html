@@ -13,95 +13,152 @@
   <!-- <mat-button-toggle value="green">Green</mat-button-toggle>
     <mat-button-toggle value="blue">Blue</mat-button-toggle> -->
 
-  <div *ngFor="let item of massCategoryList; index as i">
-    <mat-form-field appearance="fill" class="full-width-form">
-      <mat-label>Mass Category</mat-label>
-      <input matInput [(ngModel)]="massCategoryList[i].header" />
-    </mat-form-field>
+  <div *ngFor="let item of massCategoryList; index as i" class="main-section">
+    <mat-checkbox class="checkbox-margin"></mat-checkbox>
 
-    <div>
-      <button mat-raised-button color="primary">Add Mass</button>
-    </div>
-
-    <div *ngFor="let massItem of massCategoryList[i].massess; index as j">
+    <mat-expansion-panel (opened)="(true)" class="expansion-panel">
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ massCategoryList[i].header }} </mat-panel-title>
+        <mat-panel-description>
+          {{ massCategoryList[i].massess.length }} Mass(s)
+        </mat-panel-description>
+      </mat-expansion-panel-header>
       <mat-form-field appearance="fill" class="full-width-form">
-        <mat-label>Mass</mat-label>
-        <input matInput [(ngModel)]="massCategoryList[i].massess[j].name" />
+        <mat-label>Mass Category</mat-label>
+        <input matInput [(ngModel)]="massCategoryList[i].header" />
       </mat-form-field>
-      <div class="mass-church">
-        <div>
-          <h4>St Marys Maharagama</h4>
 
-          <div
-            *ngFor="
-              let massItem of massCategoryList[i].massess[j].maharagama;
-              index as k
-            "
-          >
-            <mat-form-field appearance="fill">
-              <mat-label>Item</mat-label>
-              <input
-                matInput
-                [(ngModel)]="massCategoryList[i].massess[j].maharagama[k]"
-              />
-            </mat-form-field>
+      <div>
+        <button mat-raised-button color="primary" class="add-button">
+          Add Mass
+        </button>
+      </div>
 
-            <button
-              mat-icon-button
-              color="primary"
-              aria-label="Add a office time"
-              *ngIf="k == massCategoryList[i].massess[j].maharagama.length-1"
+      <div *ngFor="let massItem of massCategoryList[i].massess; index as j">
+        <mat-form-field appearance="fill" class="full-width-form">
+          <mat-label>Mass</mat-label>
+          <input matInput [(ngModel)]="massCategoryList[i].massess[j].name" />
+        </mat-form-field>
+        <div class="mass-church">
+          <div>
+            <h4>St Marys Maharagama</h4>
+
+            <span
+              *ngIf="
+                !massCategoryList[i].massess[j].maharagama ||
+                massCategoryList[i].massess[j].maharagama.length == 0
+              "
             >
-              <mat-icon>add</mat-icon>
-            </button>
-            <button
-              mat-icon-button
-              color="primary"
-              aria-label="Add a office time"
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Add a mass for Mahragama"
+                (click)="addMassItems(i, j, 'maharagama')"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+            </span>
+
+            <div
+              *ngFor="
+                let massItem of massCategoryList[i].massess[j].maharagama;
+                index as k; trackBy: trackByFn
+              "
             >
-              <mat-icon>delete</mat-icon>
-            </button>
+              <mat-form-field appearance="fill">
+                <mat-label>Item</mat-label>
+                <input
+                  matInput
+                  [ngModel]="massCategoryList[i].massess[j].maharagama[k]"
+                  (keyup)="onItemUpdate($event,i, j, k, 'maharagama')"
+                />
+              </mat-form-field>
+
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Add a mass for Maharagama"
+                *ngIf="
+                  k == massCategoryList[i].massess[j].maharagama.length - 1
+                "
+                (click)="addMassItems(i, j, 'maharagama')"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Delete a mass for Maharagama"
+                (click)="deleteMassItems(i, j, k, 'maharagama')"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </div>
-        </div>
-        <div>
-          <h4>St Anthonys Boralesgamuwa</h4>
+          <div>
+            <h4>St Anthonys Boralesgamuwa</h4>
 
-          <div
-            *ngFor="
-              let massItem of massCategoryList[i].massess[j].boralesgamuwa;
-              index as k
-            "
-          >
-            <mat-form-field appearance="fill">
-              <mat-label>Item</mat-label>
-              <input
-                matInput
-                [(ngModel)]="massCategoryList[i].massess[j].boralesgamuwa[k]"
-              />
-            </mat-form-field>
+            <span
+              *ngIf="
+                !massCategoryList[i].massess[j].boralesgamuwa ||
+                massCategoryList[i].massess[j].boralesgamuwa.length == 0
+              "
+            >
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Add a mass for Boralesgamuwa"
+                (click)="addMassItems(i, j, 'boralesgamuwa')"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+            </span>
 
-            <button
-              mat-icon-button
-              color="primary"
-              aria-label="Add a mass"
-              *ngIf="k == massCategoryList[i].massess[j].boralesgamuwa.length-1"
+            <div
+              *ngFor="
+                let massItem of massCategoryList[i].massess[j].boralesgamuwa;
+                index as k;
+                trackBy: trackByFn
+              "
             >
-              <mat-icon>add</mat-icon>
-            </button>
-            <button
-              mat-icon-button
-              color="primary"
-              aria-label="Add a office time"
-            >
-              <mat-icon>delete</mat-icon>
-            </button>
+              <mat-form-field appearance="fill">
+                <mat-label>Item</mat-label>
+                <input
+                  matInput
+                  [ngModel]="massCategoryList[i].massess[j].boralesgamuwa[k]"
+                  (keyup)="onItemUpdate($event, i, j, k, 'boralesgamuwa')"
+                />
+              </mat-form-field>
+
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Add a mass for Boralesgamuwa"
+                *ngIf="
+                  k == massCategoryList[i].massess[j].boralesgamuwa.length - 1
+                "
+                (click)="addMassItems(i, j, 'maharagama')"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="primary"
+                aria-label="Delete a mass for Boralesgamuwa"
+                (click)="deleteMassItems(i, j, k, 'maharagama')"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </mat-expansion-panel>
   </div>
 
   <div class="button-group">
-    <button mat-raised-button color="primary">Publish</button>
+    <button mat-raised-button color="primary" (click)="publish()">
+      Publish
+    </button>
   </div>
 </div>

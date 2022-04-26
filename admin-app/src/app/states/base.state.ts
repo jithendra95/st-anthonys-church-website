@@ -75,6 +75,7 @@ export class BaseStateObject<Type> extends BaseState<Type> {
     })
   }
 
+
   unload(): void{
     this.object = null;
   }
@@ -104,6 +105,12 @@ export class BaseStateList<Type> extends BaseState<Type> {
           return data;
         })) 
       });
+  }
+
+  updateBulk(value: Type[]): void{
+    let itemRef;
+    itemRef = this.db.object(`${this.entity}`);
+    itemRef.set(value);
   }
 
   unloadList(): void{
