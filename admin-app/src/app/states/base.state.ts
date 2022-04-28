@@ -50,12 +50,13 @@ export class BaseStateObject<Type> extends BaseState<Type> {
   read(id: string | number): Promise<boolean> {
     const thisInst = this;
     return new Promise(function(resolve, reject){
-      thisInst.db
+      let subs = thisInst.db
       .object(`${thisInst.entity}/${id}`)
       .valueChanges()
       .pipe(first())
       .subscribe((user) => {
         thisInst.object = user as Type;
+        subs.unsubscribe();
         resolve(true);
       });
     })
@@ -64,14 +65,17 @@ export class BaseStateObject<Type> extends BaseState<Type> {
   readAll(): Promise<boolean> {
     const thisInst = this;
     return new Promise(function(resolve, reject){
-      thisInst.db
+      let subs = thisInst.db
       .object(`${thisInst.entity}`)
       .valueChanges()
       .pipe(first())
       .subscribe((obj) => {
         thisInst.object = obj as Type;
+        subs.unsubscribe();
         resolve(true);
       });
+
+      
     })
   }
 
@@ -104,7 +108,11 @@ export class BaseStateList<Type> extends BaseState<Type> {
           const data = { id: $key, ...(vaults.payload.val() as object) };
           return data;
         })) 
+        this.listSub?.unsubscribe();
+
       });
+
+    
   }
 
   updateBulk(value: Type[]): void{

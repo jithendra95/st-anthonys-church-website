@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MassCategory } from 'src/app/models/masses.interface';
+import { Mass, MassCategory } from 'src/app/models/masses.interface';
 import { MassState } from 'src/app/states/mass.state';
 
 @Component({
@@ -9,6 +9,8 @@ import { MassState } from 'src/app/states/mass.state';
 })
 export class MassComponent implements OnInit {
   massCategoryList: MassCategory[] = [];
+
+  selectedMasses: any[] = [];
   constructor(public massState: MassState) {
     this.init();
   }
@@ -25,6 +27,18 @@ export class MassComponent implements OnInit {
   publish() {
     this.massState.updateBulk(this.massCategoryList);
   }
+
+  addMass(categoryIndex: number) {
+    if (typeof this.massCategoryList[categoryIndex].massess == 'undefined') {
+      this.massCategoryList[categoryIndex].massess = [];
+    }
+    this.massCategoryList[categoryIndex].massess.push(new Mass());
+  }
+
+  deleteMass(categoryIndex: number, massIndex: number) {
+    this.massCategoryList[categoryIndex].massess.splice(massIndex, 1);
+  }
+  
 
   addMassItems(categoryIndex: number, massIndex: number, type: string) {
     if (type === 'maharagama') {
@@ -51,20 +65,6 @@ export class MassComponent implements OnInit {
     }
   }
 
-  onItemUpdate(
-    event: any,
-    categoryIndex: number,
-    massIndex: number,
-    itemIndex: number,
-    type: string
-  ) {
-    if (type === 'maharagama') {
-      this.massCategoryList[categoryIndex].massess[massIndex].maharagama[itemIndex] = event.target.value;
-    }else{
-      this.massCategoryList[categoryIndex].massess[massIndex].boralesgamuwa[itemIndex] = event.target.value;
-    }
-  }
-
   deleteMassItems(
     categoryIndex: number,
     massIndex: number,
@@ -84,7 +84,6 @@ export class MassComponent implements OnInit {
   }
 
   trackByFn(index: number, item: any) {
-    return index;  
+    return index;
   }
-
 }

@@ -20,8 +20,8 @@ export class Mass {
 
   constructor() {
     this.name = '';
-    this.maharagama = [""];
-    this.boralesgamuwa = [""];
+    this.maharagama = [];
+    this.boralesgamuwa = [];
     this.order = 0;
   }
 }

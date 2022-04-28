@@ -4,9 +4,7 @@
   <button mat-icon-button color="primary" aria-label="Add a office time">
     <mat-icon>add</mat-icon>
   </button>
-  <button mat-icon-button color="primary" aria-label="Add a office time">
-    <mat-icon>delete</mat-icon>
-  </button>
+  
 
   <br />
 
@@ -14,7 +12,7 @@
     <mat-button-toggle value="blue">Blue</mat-button-toggle> -->
 
   <div *ngFor="let item of massCategoryList; index as i" class="main-section">
-    <mat-checkbox class="checkbox-margin"></mat-checkbox>
+   
 
     <mat-expansion-panel (opened)="(true)" class="expansion-panel">
       <mat-expansion-panel-header>
@@ -29,16 +27,33 @@
       </mat-form-field>
 
       <div>
-        <button mat-raised-button color="primary" class="add-button">
+        <button
+          mat-raised-button
+          color="primary"
+          class="add-button"
+          (click)="addMass(i)"
+        >
           Add Mass
         </button>
       </div>
 
       <div *ngFor="let massItem of massCategoryList[i].massess; index as j">
-        <mat-form-field appearance="fill" class="full-width-form">
-          <mat-label>Mass</mat-label>
-          <input matInput [(ngModel)]="massCategoryList[i].massess[j].name" />
-        </mat-form-field>
+        <div class="check-field">
+          <mat-form-field appearance="fill" class="full-width-form">
+            <mat-label>Mass</mat-label>
+            <input matInput [(ngModel)]="massCategoryList[i].massess[j].name" />
+          </mat-form-field>
+
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Delete a main mass"
+            (click)="deleteMass(i, j)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+
         <div class="mass-church">
           <div>
             <h4>St Marys Maharagama</h4>
@@ -62,15 +77,15 @@
             <div
               *ngFor="
                 let massItem of massCategoryList[i].massess[j].maharagama;
-                index as k; trackBy: trackByFn
+                index as k;
+                trackBy: trackByFn
               "
             >
               <mat-form-field appearance="fill">
                 <mat-label>Item</mat-label>
                 <input
                   matInput
-                  [ngModel]="massCategoryList[i].massess[j].maharagama[k]"
-                  (keyup)="onItemUpdate($event,i, j, k, 'maharagama')"
+                  [(ngModel)]="massCategoryList[i].massess[j].maharagama[k]"
                 />
               </mat-form-field>
 
@@ -125,8 +140,7 @@
                 <mat-label>Item</mat-label>
                 <input
                   matInput
-                  [ngModel]="massCategoryList[i].massess[j].boralesgamuwa[k]"
-                  (keyup)="onItemUpdate($event, i, j, k, 'boralesgamuwa')"
+                  [(ngModel)]="massCategoryList[i].massess[j].boralesgamuwa[k]"
                 />
               </mat-form-field>
 
@@ -137,7 +151,7 @@
                 *ngIf="
                   k == massCategoryList[i].massess[j].boralesgamuwa.length - 1
                 "
-                (click)="addMassItems(i, j, 'maharagama')"
+                (click)="addMassItems(i, j, 'boralesgamuwa')"
               >
                 <mat-icon>add</mat-icon>
               </button>
@@ -145,7 +159,7 @@
                 mat-icon-button
                 color="primary"
                 aria-label="Delete a mass for Boralesgamuwa"
-                (click)="deleteMassItems(i, j, k, 'maharagama')"
+                (click)="deleteMassItems(i, j, k, 'boralesgamuwa')"
               >
                 <mat-icon>delete</mat-icon>
               </button>
@@ -154,6 +168,9 @@
         </div>
       </div>
     </mat-expansion-panel>
+    <button mat-icon-button color="primary" aria-label="Delete Mass Category">
+      <mat-icon>delete</mat-icon>
+    </button>
   </div>
 
   <div class="button-group">
