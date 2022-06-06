@@ -119,11 +119,13 @@ export default function IndexPage({
                 </li>
               </ul>
 
-              <AppAlert alert={alert} />
+              
               
             </div>
           </aside>
 
+          <AppAlert alert={alert} />
+          
           <AppMass massSchedule={massSchedule} />
 
           <hr />

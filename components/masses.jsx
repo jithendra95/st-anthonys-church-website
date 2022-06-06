@@ -25,6 +25,7 @@ export default function AppMass({ massSchedule }) {
                       return <li key={`${mass.name}_mah_${j}`}>{mahMass}</li>;
                     })}
                   </ul>
+                  {mass.link ? <a href={mass.link}>{mass.linkDesc}</a> : ([])}
                 </div>
               ) : (
                 []

@@ -25,3 +25,20 @@ export class BibleVerse{
         this.verse = "";
     }
 }
+
+export enum AlertLevel{
+    warn =1,
+    danger = 0
+}
+
+export class Alert{
+    body:string;
+    header: string;
+    level: AlertLevel
+
+    constructor(){
+        this.body = "";
+        this.header = "";
+        this.level = AlertLevel.warn;
+    }
+}

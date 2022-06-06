@@ -1,0 +1,42 @@
+<div class="component-container">
+  <h3>Alerts</h3>
+
+  <div class="button-group">
+    <div></div>
+
+    <button
+      class="publish-button"
+      mat-raised-button
+      color="primary"
+      (click)="publish()"
+      [disabled]="!changeDetected"
+    >
+      Publish
+    </button>
+  </div>
+
+  <br />
+
+  <mat-form-field appearance="fill" class="full-width-form">
+    <mat-label>Alert Heading</mat-label>
+    <input matInput [(ngModel)]="alertData!.header" (keyup)="detectChange()" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width-form">
+    <mat-label>Alert</mat-label>
+    <input matInput [(ngModel)]="alertData!.body" (keyup)="detectChange()" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="small-field">
+    <mat-label>Alert Level</mat-label>
+    <mat-select
+      matNativeControl
+      [(ngModel)]="alertData!.level"
+      (selectionChange)="detectChange()"
+    >
+      <mat-option *ngFor="let type of alertTypeKeys" value="{{ type }}">{{
+        getDesc(type)
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

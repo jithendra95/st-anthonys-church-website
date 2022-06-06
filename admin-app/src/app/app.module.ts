@@ -13,6 +13,10 @@ import { GeneralComponent } from './components/general/general.component';
 import { MassComponent } from './components/mass/mass.component';
 import { AnnouncementComponent } from './components/announcement/announcement.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertComponent } from './components/alert/alert.component';
+import { LoginComponent } from './components/login/login.component';
+import { PasswordInputComponent } from './ui-elements/password-input/password-input.component';
+import { ConfirmDialogComponent } from './ui-elements/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminConsoleComponent,
     GeneralComponent,
     MassComponent,
-    AnnouncementComponent
+    AnnouncementComponent,
+    AlertComponent,
+    LoginComponent,
+    PasswordInputComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

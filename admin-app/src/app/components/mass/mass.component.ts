@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Mass, MassCategory } from 'src/app/models/masses.interface';
+import { ToastService } from 'src/app/services/toast.service';
 import { MassState } from 'src/app/states/mass.state';
+import { ConfirmDialogComponent } from 'src/app/ui-elements/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-mass',
@@ -9,9 +12,13 @@ import { MassState } from 'src/app/states/mass.state';
 })
 export class MassComponent implements OnInit {
   massCategoryList: MassCategory[] = [];
+  changeDetected = false;
 
-  selectedMasses: any[] = [];
-  constructor(public massState: MassState) {
+  constructor(
+    public massState: MassState,
+    public dialog: MatDialog,
+    private toastService: ToastService
+  ) {
     this.init();
   }
 
@@ -25,7 +32,57 @@ export class MassComponent implements OnInit {
   ngOnInit(): void {}
 
   publish() {
+    this.massCategoryList.forEach(massCat=>{
+      massCat.updatedDate = new Date().toDateString();
+    });
+    
     this.massState.updateBulk(this.massCategoryList);
+    this.changeDetected = false;
+    this.toastService.showToast("Masses Published", '');
+  }
+
+  detectChange(): void {
+    this.changeDetected = true;
+  }
+
+  addMassCategory() {
+    this.massCategoryList.push(new MassCategory());
+    this.detectChange();
+  }
+
+  deleteMassCategory(categoryIndex: number) {
+    let massCat = this.massCategoryList[categoryIndex];
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '450px',
+      data: {
+        title: 'Delete Mass Category',
+        message: `Are you sure you want to delete Mass Category  ${
+          massCat!.header
+        } ?`,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.massCategoryList.splice(categoryIndex, 1);
+        this.detectChange();
+      }
+    });
+  }
+
+  moveMassCategory(categoryIndex: number, direction: string) {
+    if (direction === 'up') {
+      const tempMassCategory = this.massCategoryList[categoryIndex];
+      this.massCategoryList[categoryIndex] =
+        this.massCategoryList[categoryIndex - 1];
+      this.massCategoryList[categoryIndex - 1] = tempMassCategory;
+    } else {
+      const tempMassCategory = this.massCategoryList[categoryIndex];
+      this.massCategoryList[categoryIndex] =
+        this.massCategoryList[categoryIndex + 1];
+      this.massCategoryList[categoryIndex + 1] = tempMassCategory;
+    }
+    this.detectChange();
   }
 
   addMass(categoryIndex: number) {
@@ -33,12 +90,26 @@ export class MassComponent implements OnInit {
       this.massCategoryList[categoryIndex].massess = [];
     }
     this.massCategoryList[categoryIndex].massess.push(new Mass());
+    this.detectChange();
   }
 
   deleteMass(categoryIndex: number, massIndex: number) {
-    this.massCategoryList[categoryIndex].massess.splice(massIndex, 1);
+    let mass = this.massCategoryList[categoryIndex].massess[massIndex];
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '450px',
+      data: {
+        title: 'Delete Mass',
+        message: `Are you sure you want to delete Mass  ${mass!.name} ?`,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.massCategoryList[categoryIndex].massess.splice(massIndex, 1);
+        this.detectChange();
+      }
+    });
   }
-  
 
   addMassItems(categoryIndex: number, massIndex: number, type: string) {
     if (type === 'maharagama') {
@@ -63,6 +134,7 @@ export class MassComponent implements OnInit {
         massIndex
       ].boralesgamuwa.push('');
     }
+    this.detectChange();
   }
 
   deleteMassItems(
@@ -81,6 +153,7 @@ export class MassComponent implements OnInit {
         massIndex
       ].boralesgamuwa.splice(itemIndex, 1);
     }
+    this.detectChange();
   }
 
   trackByFn(index: number, item: any) {

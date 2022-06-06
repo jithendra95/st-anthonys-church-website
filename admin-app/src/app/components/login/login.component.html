@@ -1,0 +1,34 @@
+<div class="login-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>St Mary's Maharagama - Admin App</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+            <div class="input-container">
+              <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]="email" />
+              </mat-form-field>
+  
+              <app-password-input
+                [(password)]="password"
+                [label]="'Password'"
+                [fullWidth]="true"
+              ></app-password-input>
+  
+              <button
+                mat-raised-button
+                color="primary"
+                style="width: 100%"
+                (click)="signIn()"
+              >
+                Login
+              </button>
+            </div>
+      </mat-card-content>
+      <mat-card-footer *ngIf="isLoading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+  

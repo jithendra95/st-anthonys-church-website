@@ -87,11 +87,11 @@ export default function MassPage({ massSchedule, alert }) {
                   </div>
                 </li>
               </ul>
-              
-              <AppAlert alert={alert}/>
             </div>
           </aside>
 
+          <AppAlert alert={alert}/>
+          
           <AppMass massSchedule={massSchedule} />
         </div>
       </Layout>

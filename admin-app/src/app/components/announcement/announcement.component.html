@@ -1,42 +1,141 @@
 <div class="component-container">
-    <h3>Massess</h3>
-  
-    <button mat-icon-button color="primary" aria-label="Add a office time">
-      <mat-icon>add</mat-icon>
-    </button>
-    <button mat-icon-button color="primary" aria-label="Add a office time">
-      <mat-icon>delete</mat-icon>
-    </button>
-  
-    <br />
-  
-    <!-- <mat-button-toggle value="green">Green</mat-button-toggle>
-      <mat-button-toggle value="blue">Blue</mat-button-toggle> -->
-  
-    <mat-form-field appearance="fill" class="full-width-form">
-      <mat-label>Title</mat-label>
-      <input matInput />
-    </mat-form-field>
-  
+  <h3>Announcements</h3>
+
+  <div class="button-group">
     <div>
-        <h4>Announcement Points</h4>
-  
-        <mat-form-field appearance="fill" class="half-width-form">
-          <mat-label>Item</mat-label>
-          <input matInput />
-        </mat-form-field>
-  
-        <button mat-icon-button color="primary" aria-label="Add announcement Item">
+      <button
+        mat-icon-button
+        color="primary"
+        aria-label="Add Mass Category"
+        (click)="addAnnouncement()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <button
+      class="publish-button"
+      mat-raised-button
+      color="primary"
+      (click)="publish()"
+      [disabled]="!changeDetected"
+    >
+      Publish
+    </button>
+  </div>
+
+  <br />
+
+  <div *ngFor="let item of announcementList; index as i" class="main-section">
+    <mat-expansion-panel (opened)="(true)" class="expansion-panel">
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ announcementList[i].title }} </mat-panel-title>
+        <mat-panel-description>
+          {{ announcementList[i].sub_items.length }} Point(s)
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field appearance="fill" class="full-width-form">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          [(ngModel)]="announcementList[i].title"
+          (keyup)="detectChange()"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width-form">
+        <mat-label>Link Display Text</mat-label>
+        <input
+          matInput
+          [(ngModel)]="announcementList[i].linkText"
+          (keyup)="detectChange()"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width-form">
+        <mat-label>Link</mat-label>
+        <input
+          matInput
+          [(ngModel)]="announcementList[i].link"
+          (keyup)="detectChange()"
+        />
+      </mat-form-field>
+      <h4>Announcement Points</h4>
+      <span *ngIf="announcementList[i].sub_items.length == 0">
+        <button
+          mat-icon-button
+          color="primary"
+          aria-label="Add a Announcement"
+          (click)="addAnnouncementItem(i)"
+        >
           <mat-icon>add</mat-icon>
         </button>
-        <button mat-icon-button color="primary" aria-label="Delete announcement Item">
+      </span>
+
+      <div
+        *ngFor="
+          let item of announcementList[i].sub_items;
+          index as j;
+          trackBy: trackByFn
+        "
+      >
+        <mat-form-field appearance="fill" class="half-width-form">
+          <mat-label>Item</mat-label>
+          <input
+            matInput
+            [(ngModel)]="announcementList[i].sub_items[j]"
+            (keyup)="detectChange()"
+          />
+        </mat-form-field>
+
+        <button
+          mat-icon-button
+          color="primary"
+          aria-label="Add announcement Item"
+          *ngIf="j == announcementList[i].sub_items.length - 1"
+          (click)="addAnnouncementItem(i)"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          aria-label="Delete announcement Item"
+          (click)="deleteAnnouncementItem(i, j)"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </div>
-  
-  
-    <div class="button-group">
-      <button mat-raised-button color="primary">Publish</button>
-    </div>
+    </mat-expansion-panel>
+
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="Delete Mass Category"
+      (click)="deleteAnnouncement(i)"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="Move Mass Category Up"
+      (click)="moveAnnouncement(i, 'up')"
+      *ngIf="i !== 0"
+    >
+      <mat-icon>keyboard_arrow_up</mat-icon>
+    </button>
+
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="Move Mass Category Down"
+      (click)="moveAnnouncement(i, 'down')"
+      *ngIf="i < announcementList.length - 1"
+    >
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
   </div>
-  
+</div>
