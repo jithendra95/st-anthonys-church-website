@@ -1,52 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.component-container{
-    margin-left: 15%;
-    margin-right: 15%;
-    padding-top: 25px;
-
-    .full-width-form{
-        width: 100%;
-    }
-
-    .half-width-form{
-        width: 80%;
-    }
-
-    h3{
-        text-align: center;
-    }
-    
-    .button-group{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    mat-form-field {
-        margin-right: 15px;
-        width: 250px;
-    }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.publish-button{
-    width: 100px;
-}
+.component-container {
+  padding-top: 25px;
 
+  .full-width-form {
+    width: 100%;
+  }
 
-.main-section{
+  .half-width-form {
+    width: 80%;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .button-group {
     display: flex;
     flex-direction: row;
-    margin:5px;
+    justify-content: space-between;
+  }
+
+  mat-form-field {
+    margin-right: 15px;
+    width: 250px;
+  }
 }
 
-.expansion-panel{
-    width: 1000px; 
+@media only screen and (min-width: 720px) {
+.component-container {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 25px;
+
+    mat-form-field {
+      margin-right: 15px;
+      width: 250px;
+    }
+  }
+}
+.publish-button {
+  width: 100px;
 }
 
-.add-button{
-    margin: 5px;
+.main-section {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
 }
+
+.expansion-panel {
+  width: 1000px;
+}
+

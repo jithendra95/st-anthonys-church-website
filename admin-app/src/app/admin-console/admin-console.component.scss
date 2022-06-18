@@ -1,14 +1,21 @@
-.admin-container{
-    background-color: beige;
-    height: 100vh;
+.admin-container {
+  background-color: beige;
+  height: 100vh;
 }
-.main-container{
-    margin-left: 20%;
-    margin-right: 20%;
+
+.main-container {
     height: 100vh;
     background-color: white;
+    padding: 5px;
+  }
+
+@media only screen and (min-width: 720px) {
+  .main-container {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
 }
 
 .example-spacer {
-    flex: 1 1 auto;
-  }
+  flex: 1 1 auto;
+}

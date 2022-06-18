@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy-web": "next build && firebase deploy --only functions && firebase deploy --only hosting:web",
+    "deploy-admin": "cd admin-app && ng build && cd ../ && firebase deploy --only hosting:admin"
   },
   "keywords": [],
   "author": "",

@@ -32,13 +32,13 @@ export class MassComponent implements OnInit {
   ngOnInit(): void {}
 
   publish() {
-    this.massCategoryList.forEach(massCat=>{
+    this.massCategoryList.forEach((massCat) => {
       massCat.updatedDate = new Date().toDateString();
     });
-    
+
     this.massState.updateBulk(this.massCategoryList);
     this.changeDetected = false;
-    this.toastService.showToast("Masses Published", '');
+    this.toastService.showToast('Masses Published', '');
   }
 
   detectChange(): void {
@@ -46,7 +46,7 @@ export class MassComponent implements OnInit {
   }
 
   addMassCategory() {
-    this.massCategoryList.push(new MassCategory());
+    this.massCategoryList.unshift(new MassCategory());
     this.detectChange();
   }
 
@@ -89,7 +89,20 @@ export class MassComponent implements OnInit {
     if (typeof this.massCategoryList[categoryIndex].massess == 'undefined') {
       this.massCategoryList[categoryIndex].massess = [];
     }
-    this.massCategoryList[categoryIndex].massess.push(new Mass());
+    this.massCategoryList[categoryIndex].massess.unshift(new Mass());
+    this.detectChange();
+  }
+
+  reOrderMass(categoryIndex: number) {
+    let n = this.massCategoryList[categoryIndex].massess.length - 1;
+    for (let i = 0; i <= n/2; i++) {
+      let mass = JSON.parse(
+        JSON.stringify(this.massCategoryList[categoryIndex].massess[i])
+      );
+      this.massCategoryList[categoryIndex].massess[i] =
+        this.massCategoryList[categoryIndex].massess[n - i];
+      this.massCategoryList[categoryIndex].massess[n - i] = mass;
+    }
     this.detectChange();
   }
 

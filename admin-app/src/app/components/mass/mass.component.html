@@ -53,6 +53,18 @@
         >
           Add Mass
         </button>
+
+        <button
+          mat-raised-button
+          color="primary"
+          class="add-button"
+          (click)="reOrderMass(i)"
+          style = 'margin-left: 10px;'
+        >
+          Reverse Order of Masses
+        </button>
+
+        
       </div>
 
       <div *ngFor="let massItem of massCategoryList[i].massess; index as j">
@@ -76,120 +88,128 @@
           </button>
         </div>
 
-        <div class="mass-church">
-          <div>
-            <h4>St Marys Maharagama</h4>
+        <div>
+          <h3>Churches</h3>
+          <mat-tab-group mat-align-tabs="center" [selectedIndex]="0">
+            <mat-tab label="Maharagama">
+              <div>
+                <span
+                  *ngIf="
+                    !massCategoryList[i].massess[j].maharagama ||
+                    massCategoryList[i].massess[j].maharagama.length == 0
+                  "
+                >
+                  <button
+                    mat-icon-button
+                    color="primary"
+                    aria-label="Add a mass for Mahragama"
+                    (click)="addMassItems(i, j, 'maharagama')"
+                  >
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </span>
 
-            <span
-              *ngIf="
-                !massCategoryList[i].massess[j].maharagama ||
-                massCategoryList[i].massess[j].maharagama.length == 0
-              "
-            >
-              <button
-                mat-icon-button
-                color="primary"
-                aria-label="Add a mass for Mahragama"
-                (click)="addMassItems(i, j, 'maharagama')"
-              >
-                <mat-icon>add</mat-icon>
-              </button>
-            </span>
+                <div
+                  *ngFor="
+                    let massItem of massCategoryList[i].massess[j].maharagama;
+                    index as k;
+                    trackBy: trackByFn
+                  "
+                >
+                  <mat-form-field appearance="fill">
+                    <mat-label>Item</mat-label>
+                    <input
+                      matInput
+                      [(ngModel)]="massCategoryList[i].massess[j].maharagama[k]"
+                      (keyup)="detectChange()"
+                    />
+                  </mat-form-field>
 
-            <div
-              *ngFor="
-                let massItem of massCategoryList[i].massess[j].maharagama;
-                index as k;
-                trackBy: trackByFn
-              "
-            >
-              <mat-form-field appearance="fill">
-                <mat-label>Item</mat-label>
-                <input
-                  matInput
-                  [(ngModel)]="massCategoryList[i].massess[j].maharagama[k]"
-                  (keyup)="detectChange()"
-                />
-              </mat-form-field>
+                  <button
+                    mat-icon-button
+                    color="primary"
+                    aria-label="Add a mass for Maharagama"
+                    *ngIf="
+                      k == massCategoryList[i].massess[j].maharagama.length - 1
+                    "
+                    (click)="addMassItems(i, j, 'maharagama')"
+                  >
+                    <mat-icon>add</mat-icon>
+                  </button>
+                  <button
+                    mat-icon-button
+                    color="primary"
+                    aria-label="Delete a mass for Maharagama"
+                    (click)="deleteMassItems(i, j, k, 'maharagama')"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Boralesgamuwa">
+              <div>
+                <span
+                  *ngIf="
+                    !massCategoryList[i].massess[j].boralesgamuwa ||
+                    massCategoryList[i].massess[j].boralesgamuwa.length == 0
+                  "
+                >
+                  <button
+                    mat-icon-button
+                    color="primary"
+                    aria-label="Add a mass for Boralesgamuwa"
+                    (click)="addMassItems(i, j, 'boralesgamuwa')"
+                  >
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </span>
 
-              <button
-                mat-icon-button
-                color="primary"
-                aria-label="Add a mass for Maharagama"
-                *ngIf="
-                  k == massCategoryList[i].massess[j].maharagama.length - 1
-                "
-                (click)="addMassItems(i, j, 'maharagama')"
-              >
-                <mat-icon>add</mat-icon>
-              </button>
-              <button
-                mat-icon-button
-                color="primary"
-                aria-label="Delete a mass for Maharagama"
-                (click)="deleteMassItems(i, j, k, 'maharagama')"
-              >
-                <mat-icon>delete</mat-icon>
-              </button>
-            </div>
-          </div>
-          <div>
-            <h4>St Anthonys Boralesgamuwa</h4>
+                <div
+                  *ngFor="
+                    let massItem of massCategoryList[i].massess[j]
+                      .boralesgamuwa;
+                    index as k;
+                    trackBy: trackByFn
+                  "
+                >
+                  <mat-form-field appearance="fill">
+                    <mat-label>Item</mat-label>
+                    <input
+                      matInput
+                      [(ngModel)]="
+                        massCategoryList[i].massess[j].boralesgamuwa[k]
+                      "
+                      (keyup)="detectChange()"
+                    />
+                  </mat-form-field>
 
-            <span
-              *ngIf="
-                !massCategoryList[i].massess[j].boralesgamuwa ||
-                massCategoryList[i].massess[j].boralesgamuwa.length == 0
-              "
-            >
-              <button
-                mat-icon-button
-                color="primary"
-                aria-label="Add a mass for Boralesgamuwa"
-                (click)="addMassItems(i, j, 'boralesgamuwa')"
-              >
-                <mat-icon>add</mat-icon>
-              </button>
-            </span>
-
-            <div
-              *ngFor="
-                let massItem of massCategoryList[i].massess[j].boralesgamuwa;
-                index as k;
-                trackBy: trackByFn
-              "
-            >
-              <mat-form-field appearance="fill">
-                <mat-label>Item</mat-label>
-                <input
-                  matInput
-                  [(ngModel)]="massCategoryList[i].massess[j].boralesgamuwa[k]"
-                  (keyup)="detectChange()"
-                />
-              </mat-form-field>
-
-              <button
-                mat-icon-button
-                color="primary"
-                aria-label="Add a mass for Boralesgamuwa"
-                *ngIf="
-                  k == massCategoryList[i].massess[j].boralesgamuwa.length - 1
-                "
-                (click)="addMassItems(i, j, 'boralesgamuwa')"
-              >
-                <mat-icon>add</mat-icon>
-              </button>
-              <button
-                mat-icon-button
-                color="primary"
-                aria-label="Delete a mass for Boralesgamuwa"
-                (click)="deleteMassItems(i, j, k, 'boralesgamuwa')"
-              >
-                <mat-icon>delete</mat-icon>
-              </button>
-            </div>
-          </div>
+                  <button
+                    mat-icon-button
+                    color="primary"
+                    aria-label="Add a mass for Boralesgamuwa"
+                    *ngIf="
+                      k ==
+                      massCategoryList[i].massess[j].boralesgamuwa.length - 1
+                    "
+                    (click)="addMassItems(i, j, 'boralesgamuwa')"
+                  >
+                    <mat-icon>add</mat-icon>
+                  </button>
+                  <button
+                    mat-icon-button
+                    color="primary"
+                    aria-label="Delete a mass for Boralesgamuwa"
+                    (click)="deleteMassItems(i, j, k, 'boralesgamuwa')"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
         </div>
+        <hr />
       </div>
     </mat-expansion-panel>
     <button

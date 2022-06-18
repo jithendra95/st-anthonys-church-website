@@ -42,7 +42,7 @@ export class AnnouncementComponent implements OnInit {
   }
 
   addAnnouncement() {
-    this.announcementList.push(new Announcement());
+    this.announcementList.unshift(new Announcement());
     this.detectChange();
   }
 

@@ -1,27 +1,33 @@
-.login-container{
-    height: calc(99vh);
+.login-container {
+  height: calc(99vh);
 
-    mat-card{
-        width: 30%;
-        margin: 0;
-        position: absolute;
-        top: 20%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-    }
+  mat-card {
+    margin: 0;
+    position: absolute;
+    top: 20%;
+  }
 
-    mat-tab-group{
-        width: 100%;
-    }
+  mat-tab-group {
+    width: 100%;
+  }
 
-    mat-form-field{
-        width: 100%;
-    }
-
-    
+  mat-form-field {
+    width: 100%;
+  }
 }
 
-.input-container{
-    margin-top: 15px;
+.input-container {
+  margin-top: 15px;
+}
+@media only screen and (min-width: 720px) {
+  .login-container {
+    height: calc(99vh);
+
+    mat-card {
+      width: 30%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+  }
 }

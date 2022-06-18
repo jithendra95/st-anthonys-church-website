@@ -1,5 +1,6 @@
 {
-  "hosting": {
+  "hosting": [{
+    "target": "web",
     "public": "public",
     "ignore": [
       "firebase.json",
@@ -15,6 +16,17 @@
     ],
     "cleanUrls": true
   },
+  {
+    "target": "admin",
+    "public": "admin-app/dist/admin-app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "**/admin-app/**"
+    ],
+    "cleanUrls": true
+  }],
   "functions": {
     "runtime": "nodejs14",
     "source": ".",

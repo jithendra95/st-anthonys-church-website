@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "church-web-mahar"
+  },
+  "targets": {
+    "church-web-mahar": {
+      "hosting": {
+        "admin": [
+          "admin-app-c7a82"
+        ],
+        "web":["church-web-mahar"]
+      }
+    }
   }
 }
